@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONet.FAU.Rx.16_128", "ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128.csproj", "{9601DE87-07A0-4F6C-8DC4-160A7C9A8B7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONet.FAU.Rx.16_128.Extension", "ONet.FAU.Rx.16_128.Extension\ONet.FAU.Rx.16_128.Extension.csproj", "{0EC2E7E0-CCFC-4178-B1F2-B421D447A865}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9601DE87-07A0-4F6C-8DC4-160A7C9A8B7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9601DE87-07A0-4F6C-8DC4-160A7C9A8B7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9601DE87-07A0-4F6C-8DC4-160A7C9A8B7E}.Debug|x64.ActiveCfg = Debug|x64
+		{9601DE87-07A0-4F6C-8DC4-160A7C9A8B7E}.Debug|x64.Build.0 = Debug|x64
+		{9601DE87-07A0-4F6C-8DC4-160A7C9A8B7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9601DE87-07A0-4F6C-8DC4-160A7C9A8B7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9601DE87-07A0-4F6C-8DC4-160A7C9A8B7E}.Release|x64.ActiveCfg = Release|x64
+		{9601DE87-07A0-4F6C-8DC4-160A7C9A8B7E}.Release|x64.Build.0 = Release|x64
+		{0EC2E7E0-CCFC-4178-B1F2-B421D447A865}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EC2E7E0-CCFC-4178-B1F2-B421D447A865}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EC2E7E0-CCFC-4178-B1F2-B421D447A865}.Debug|x64.ActiveCfg = Debug|x64
+		{0EC2E7E0-CCFC-4178-B1F2-B421D447A865}.Debug|x64.Build.0 = Debug|x64
+		{0EC2E7E0-CCFC-4178-B1F2-B421D447A865}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EC2E7E0-CCFC-4178-B1F2-B421D447A865}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EC2E7E0-CCFC-4178-B1F2-B421D447A865}.Release|x64.ActiveCfg = Release|x64
+		{0EC2E7E0-CCFC-4178-B1F2-B421D447A865}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

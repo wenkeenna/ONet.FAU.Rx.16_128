@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9601DE87-07A0-4F6C-8DC4-160A7C9A8B7E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ONet.FAU.Rx._16_128</RootNamespace>
+    <AssemblyName>ONet.FAU.Rx.16_128</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AvalonDock, Version=4.72.1.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dirkster.AvalonDock.4.72.1\lib\net40\AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="AvalonDock.Themes.VS2013, Version=4.72.1.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dirkster.AvalonDock.Themes.VS2013.4.72.1\lib\net40\AvalonDock.Themes.VS2013.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.AnalogCamLib">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.AnalogCamLib\bin\x64\Debug\DM.AnalogCamLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.CustomControl">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.CustomControl\bin\x64\Debug\DM.CustomControl.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.DataVisualization">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.DataVisualization\bin\x64\Debug\DM.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.Foundation.DataBinding">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.Foundation.DataBinding\bin\x64\Debug\DM.Foundation.DataBinding.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.Foundation.Licensing">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.Foundation.Licensing\bin\x64\Debug\DM.Foundation.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.Foundation.Logging">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.Foundation.Logging\bin\x64\Debug\DM.Foundation.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.Foundation.Motion">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.Foundation.Motion\bin\x64\Debug\DM.Foundation.Motion.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.Foundation.Parameters">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.Foundation.Parameters\bin\x64\Debug\DM.Foundation.Parameters.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.Foundation.Shared">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.Foundation.Shared\bin\x64\Debug\DM.Foundation.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.Foundation.Styles">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.Foundation.Styles\bin\x64\Debug\DM.Foundation.Styles.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.InstrumentKit">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.InstrumentKit\bin\x64\Debug\DM.InstrumentKit.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.LoginModule">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.LoginModule\bin\Debug\DM.LoginModule.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.ManualMotionControl">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.ManualMotionControl\bin\x64\Debug\DM.ManualMotionControl.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.TaskFlow">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.TaskFlow\bin\x64\Debug\DM.TaskFlow.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.ToolBase">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.ToolBase\bin\x64\Debug\DM.ToolBase.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.TrayMap">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.TrayMap\bin\Debug\DM.TrayMap.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.UserManagement">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.UserManagement\bin\x64\Debug\DM.UserManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="DM.Vision">
+      <HintPath>..\..\..\..\..\..\DM.Foundation\DM.Vision\bin\x64\Debug\DM.Vision.dll</HintPath>
+    </Reference>
+    <Reference Include="DryIoc, Version=4.7.7.0, Culture=neutral, PublicKeyToken=dfbf2bd50fcf7768, processorArchitecture=MSIL">
+      <HintPath>..\packages\DryIoc.dll.4.7.7\lib\net45\DryIoc.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.8.1.97\lib\net461\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.DryIoc.Wpf, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.DryIoc.8.1.97\lib\net461\Prism.DryIoc.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="Prism.Wpf, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Wpf.8.1.97\lib\net461\Prism.Wpf.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="VM.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=61600122bc9264b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\VisionMaster4.2.0\Development\V4.x\ComControls\Assembly\VM.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="VM.PlatformSDKCS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c1484a72052ee3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\VisionMaster4.2.0\Development\V4.x\ComControls\Assembly\VM.PlatformSDKCS.dll</HintPath>
+    </Reference>
+    <Reference Include="VMControls.Interface, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cb41614600cf774b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>C:\Program Files\VisionMaster4.2.0\Development\V4.x\ComControls\Assembly\VMControls.Interface.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Initialization\GlobalConfigService.cs" />
+    <Compile Include="Initialization\MotionSystemInitializer.cs" />
+    <Compile Include="Initialization\MotionSystemService.cs" />
+    <Compile Include="Initialization\ParameterInitializer.cs" />
+    <Compile Include="Initialization\VisionProcess.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="Views\MainView.xaml.cs">
+      <DependentUpon>MainView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resource\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\MainView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ONet.FAU.Rx.16_128.Extension\ONet.FAU.Rx.16_128.Extension.csproj">
+      <Project>{0EC2E7E0-CCFC-4178-B1F2-B421D447A865}</Project>
+      <Name>ONet.FAU.Rx.16_128.Extension</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

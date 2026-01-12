@@ -1,0 +1,7 @@
+F:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\Debug\ONet.FAU.Rx.16_128.csproj.AssemblyReference.cache
+F:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\Debug\ONet.FAU.Rx.16_128.csproj.SuggestedBindingRedirects.cache
+F:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\Debug\ONet.FAU.Rx.16_128.exe.config
+F:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\Debug\Views\MainView.g.cs
+F:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\Debug\App.g.cs
+F:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\Debug\ONet.FAU.Rx.16_128_MarkupCompile.cache
+F:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\Debug\ONet.FAU.Rx.16_128_MarkupCompile.lref
