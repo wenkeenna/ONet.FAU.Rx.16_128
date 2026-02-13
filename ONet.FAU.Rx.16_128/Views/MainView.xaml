@@ -2,9 +2,9 @@
     x:Class="ONet.FAU.Rx._16_128.Views.MainView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:VM="clr-namespace:ONet.FAU.Rx._16_128.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:ONet.FAU.Rx._16_128.Views"
-    xmlns:VM="clr-namespace:ONet.FAU.Rx._16_128.ViewModels"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
     Title="MainView"
@@ -38,15 +38,15 @@
             </Grid.RowDefinitions>
 
             <Border
-             x:Name="TitleBorder"
-             Grid.Row="0"
-             Background="{StaticResource Vs2013BlueThemeColor}"
-             CornerRadius="0 0 0 0">
+                x:Name="TitleBorder"
+                Grid.Row="0"
+                Background="{StaticResource Vs2013BlueThemeColor}"
+                CornerRadius="0 0 0 0">
                 <DockPanel
-                 Margin="10,0,0,0"
-                 VerticalAlignment="Center"
-                 Background="Transparent"
-                 LastChildFill="False">
+                    Margin="10,0,0,0"
+                    VerticalAlignment="Center"
+                    Background="Transparent"
+                    LastChildFill="False">
 
                     <!--<Image
                  Height="20"
@@ -54,12 +54,12 @@
                  Source="../Resource/ico-512.ico"
                  Stretch="Uniform" />-->
                     <Label
-                     Padding="0"
-                     VerticalContentAlignment="Center"
-                     Content="武汉达姆科技有限公司"
-                     FontSize="16"
-                     FontWeight="Light"
-                     Foreground="Black" />
+                        Padding="0"
+                        VerticalContentAlignment="Center"
+                        Content="武汉达姆科技有限公司"
+                        FontSize="16"
+                        FontWeight="Light"
+                        Foreground="Black" />
                     <!--<Button
                  Width="80"
                  Margin="10,0,0,0"
@@ -67,68 +67,68 @@
                  CommandParameter="CH1"
                  Content="测试" />-->
                     <Button
-                     x:Name="BtnClose"
-                     Width="30"
-                     Height="25"
-                     Padding="0"
-                     Command="{Binding AppCloseCommand}"
-                     Content="&#xE82A;"
-                     DockPanel.Dock="Right"
-                     FontFamily="{StaticResource MyIconfont}"
-                     FontSize="15"
-                     Foreground="Black"
-                     Style="{StaticResource TitleButton}" />
+                        x:Name="BtnClose"
+                        Width="30"
+                        Height="25"
+                        Padding="0"
+                        Command="{Binding AppCloseCommand}"
+                        Content="&#xE82A;"
+                        DockPanel.Dock="Right"
+                        FontFamily="{StaticResource MyIconfont}"
+                        FontSize="15"
+                        Foreground="Black"
+                        Style="{StaticResource TitleButton}" />
                     <Button
-                     x:Name="BtnMax"
-                     Width="30"
-                     Height="25"
-                     Padding="0"
-                     Content="&#xE68B;"
-                     Cursor=""
-                     DockPanel.Dock="Right"
-                     FontFamily="{StaticResource MyIconfont}"
-                     FontSize="15"
-                     Foreground="Black"
-                     Style="{StaticResource TitleButton}" />
+                        x:Name="BtnMax"
+                        Width="30"
+                        Height="25"
+                        Padding="0"
+                        Content="&#xE68B;"
+                        Cursor=""
+                        DockPanel.Dock="Right"
+                        FontFamily="{StaticResource MyIconfont}"
+                        FontSize="15"
+                        Foreground="Black"
+                        Style="{StaticResource TitleButton}" />
                     <Button
-                     x:Name="BtnMin"
-                     Width="30"
-                     Height="25"
-                     Padding="0"
-                     Content="&#xE828;"
-                     Cursor=""
-                     DockPanel.Dock="Right"
-                     FontFamily="{StaticResource MyIconfont}"
-                     FontSize="15"
-                     Foreground="Black"
-                     Style="{StaticResource TitleButton}" />
+                        x:Name="BtnMin"
+                        Width="30"
+                        Height="25"
+                        Padding="0"
+                        Content="&#xE828;"
+                        Cursor=""
+                        DockPanel.Dock="Right"
+                        FontFamily="{StaticResource MyIconfont}"
+                        FontSize="15"
+                        Foreground="Black"
+                        Style="{StaticResource TitleButton}" />
 
 
                     <Grid
-                     Width="100"
-                     Height="20"
-                     Margin="5,1,100,0"
-                     DockPanel.Dock="Right"
-                     PreviewMouseDown="Grid_PreviewMouseDown"
-                     ToolTip="切换用户">
+                        Width="100"
+                        Height="20"
+                        Margin="5,1,100,0"
+                        DockPanel.Dock="Right"
+                        PreviewMouseDown="Grid_PreviewMouseDown"
+                        ToolTip="切换用户">
                         <Rectangle
-                         Fill="Transparent"
-                         RadiusX="3"
-                         RadiusY="3"
-                         Stroke="White"
-                         StrokeThickness="0.2" />
+                            Fill="Transparent"
+                            RadiusX="3"
+                            RadiusY="3"
+                            Stroke="White"
+                            StrokeThickness="0.2" />
                         <DockPanel VerticalAlignment="Center" LastChildFill="False">
                             <TextBlock
-                             Margin="10,0,0,0"
-                             VerticalAlignment="Center"
-                             DockPanel.Dock="Left"
-                             FontFamily="{StaticResource MyIconfont}"
-                             FontSize="16"
-                             Text="&#xe610;" />
+                                Margin="10,0,0,0"
+                                VerticalAlignment="Center"
+                                DockPanel.Dock="Left"
+                                FontFamily="{StaticResource MyIconfont}"
+                                FontSize="16"
+                                Text="&#xe610;" />
                             <TextBlock
-                             Margin="10,0,0,0"
-                             FontSize="16"
-                             Text="{Binding _runtimeContext.CurrentUser, Mode=TwoWay}" />
+                                Margin="10,0,0,0"
+                                FontSize="16"
+                                Text="{Binding _runtimeContext.CurrentUser, Mode=TwoWay}" />
                         </DockPanel>
                     </Grid>
 
@@ -146,10 +146,10 @@
 
                 <DockPanel Background="White" LastChildFill="False">
                     <Menu
-                     Padding="0"
-                     VerticalAlignment="Center"
-                     Background="Transparent"
-                     BorderBrush="Transparent">
+                        Padding="0"
+                        VerticalAlignment="Center"
+                        Background="Transparent"
+                        BorderBrush="Transparent">
                         <!--  File Menu  -->
                         <MenuItem Header="_文件">
                             <MenuItem Header="_New" />
@@ -164,35 +164,35 @@
                         <MenuItem Header="_编辑">
                             <MenuItem Command="{Binding BtnVisionMasterEditCommand}" Header="VisionMater编辑" />
                             <MenuItem
-                             Command="{Binding MenuCommand}"
-                             CommandParameter="用户管理"
-                             Header="用户管理" />
+                                Command="{Binding MenuCommand}"
+                                CommandParameter="用户管理"
+                                Header="用户管理" />
                         </MenuItem>
 
 
                         <MenuItem Header="_视图">
-                            <MenuItem Click="RestoreLayout_Click"  Header="恢复布局" />
+                            <MenuItem Click="RestoreLayout_Click" Header="恢复布局" />
                             <CheckBox
-                             x:Name="CB_isLoadLayout"
-                             Checked="CB_isLoadLayout_Checked"
-                             Content="加载布局"
-                             Unchecked="CB_isLoadLayout_Unchecked" />
+                                x:Name="CB_isLoadLayout"
+                                Checked="CB_isLoadLayout_Checked"
+                                Content="加载布局"
+                                Unchecked="CB_isLoadLayout_Unchecked" />
                         </MenuItem>
 
 
                         <MenuItem Header="_参数">
                             <MenuItem
-                             Command="{Binding MenuCommand}"
-                             CommandParameter="设备参数"
-                             Header="_设备参数" />
+                                Command="{Binding MenuCommand}"
+                                CommandParameter="设备参数"
+                                Header="_设备参数" />
                             <MenuItem
-                             Command="{Binding MenuCommand}"
-                             CommandParameter="产品参数"
-                             Header="_产品参数" />
+                                Command="{Binding MenuCommand}"
+                                CommandParameter="产品参数"
+                                Header="_产品参数" />
                             <MenuItem
-                             Command="{Binding MenuCommand}"
-                             CommandParameter="数据绑定"
-                             Header="_数据绑定" />
+                                Command="{Binding MenuCommand}"
+                                CommandParameter="数据绑定"
+                                Header="_数据绑定" />
                         </MenuItem>
 
                         <MenuItem Header="_工具">
@@ -202,9 +202,9 @@
 
                         <MenuItem Header="_帮助">
                             <MenuItem
-                             Command="{Binding Btn_Command}"
-                             CommandParameter="版本信息"
-                             Header="_版本信息" />
+                                Command="{Binding Btn_Command}"
+                                CommandParameter="版本信息"
+                                Header="_版本信息" />
 
                         </MenuItem>
                     </Menu>
@@ -244,76 +244,141 @@
 
                                 <LayoutAnchorablePane>
                                     <LayoutAnchorable
-                                     Title="耦合数据"
-                                     CanAutoHide="False"
-                                     CanClose="False"
-                                     CanDockAsTabbedDocument="False"
-                                     CanHide="False">
+                                        Title="耦合数据"
+                                        CanAutoHide="False"
+                                        CanClose="False"
+                                        CanDockAsTabbedDocument="False"
+                                        CanHide="False">
                                         <ContentControl
-                                         x:Name="DataVisualizationView"
-                                         Height="Auto"
-                                         prism:RegionManager.RegionName="Region_PlotPanleView" />
+                                            x:Name="DataVisualizationView"
+                                            Height="Auto"
+                                            prism:RegionManager.RegionName="Region_PlotPanleView" />
                                     </LayoutAnchorable>
 
 
                                     <LayoutAnchorable
-                                     Title="压力监控"
-                                     CanAutoHide="False"
-                                     CanClose="False"
-                                     CanDockAsTabbedDocument="False"
-                                     CanHide="False">
+                                        Title="压力监控"
+                                        CanAutoHide="False"
+                                        CanClose="False"
+                                        CanDockAsTabbedDocument="False"
+                                        CanHide="False">
                                         <ContentControl
-                                         x:Name="PressureSensorView"
-                                         Height="Auto"
-                                         prism:RegionManager.RegionName="Region_PressureSensorView" />
+                                            x:Name="PressureSensorView"
+                                            Height="Auto"
+                                            prism:RegionManager.RegionName="Region_PressureSensorView" />
                                     </LayoutAnchorable>
 
 
                                     <LayoutAnchorable
-                                     Title="UV灯"
-                                     CanAutoHide="False"
-                                     CanClose="False"
-                                     CanDockAsTabbedDocument="False"
-                                     CanHide="False">
+                                        Title="UV灯"
+                                        CanAutoHide="False"
+                                        CanClose="False"
+                                        CanDockAsTabbedDocument="False"
+                                        CanHide="False">
                                         <ContentControl
-                                         x:Name="UVLampUPS81BView"
-                                         Height="Auto"
-                                         prism:RegionManager.RegionName="Region_UVLampUPS81BView"
-                                         IsEnabled="{Binding IsLicenseValid}" />
-
-                                    </LayoutAnchorable>
-
-
-                                    <LayoutAnchorable
-                                     Title="DC65"
-                                     CanAutoHide="False"
-                                     CanClose="False"
-                                     CanDockAsTabbedDocument="False"
-                                     CanHide="False">
-                                        <ContentControl
-                                         x:Name="DC65LightSourceView"
-                                         Height="Auto"
-                                         prism:RegionManager.RegionName="Region_DC65LightSourceView"
-                                         IsEnabled="{Binding IsLicenseValid}" />
-
-                                    </LayoutAnchorable>
-
-                                    <LayoutAnchorable
-                                     Title="源表"
-                                     CanAutoHide="False"
-                                     CanClose="False"
-                                     CanDockAsTabbedDocument="False"
-                                     CanHide="False">
-                                        <ContentControl
-                                         x:Name="MaynuoM8811View"
-                                         Height="Auto"
-                                         prism:RegionManager.RegionName="Region_MaynuoM8811View"
-                                         IsEnabled="{Binding IsLicenseValid}" />
+                                            x:Name="UVLampUPS81BView"
+                                            Height="Auto"
+                                            prism:RegionManager.RegionName="Region_UVLampUPS81BView"
+                                            IsEnabled="{Binding IsLicenseValid}" />
 
                                     </LayoutAnchorable>
 
 
                                     <LayoutAnchorable
+                                        Title="DC65"
+                                        CanAutoHide="False"
+                                        CanClose="False"
+                                        CanDockAsTabbedDocument="False"
+                                        CanHide="False">
+                                        <ContentControl
+                                            x:Name="DC65LightSourceView"
+                                            Height="Auto"
+                                            prism:RegionManager.RegionName="Region_DC65LightSourceView"
+                                            IsEnabled="{Binding IsLicenseValid}" />
+
+                                    </LayoutAnchorable>
+
+                                    <LayoutAnchorable
+                                        Title="源表"
+                                        CanAutoHide="False"
+                                        CanClose="False"
+                                        CanDockAsTabbedDocument="False"
+                                        CanHide="False">
+                                        <ContentControl
+                                            x:Name="MaynuoM8811View"
+                                            Height="Auto"
+                                            prism:RegionManager.RegionName="Region_ONetMaynuoM8811View"
+                                            IsEnabled="{Binding IsLicenseValid}" />
+
+                                    </LayoutAnchorable>
+
+                                    <LayoutAnchorable
+                                        Title="光源_A"
+                                        CanAutoHide="False"
+                                        CanClose="False"
+                                        CanDockAsTabbedDocument="False"
+                                        CanHide="False">
+                                        <ContentControl
+                                            x:Name="GolightOSMWD41310View"
+                                            Height="Auto"
+                                            prism:RegionManager.RegionName="Region_GolightOSMWD41310View"
+                                            IsEnabled="{Binding IsLicenseValid}" />
+
+                                    </LayoutAnchorable>
+
+
+
+
+                                    <LayoutAnchorable
+                                        Title="光源_B"
+                                        CanAutoHide="False"
+                                        CanClose="False"
+                                        CanDockAsTabbedDocument="False"
+                                        CanHide="False">
+                                        <ContentControl
+                                            x:Name="GolightOSMWD41310_B_View"
+                                            Height="Auto"
+                                            prism:RegionManager.RegionName="Region_GolightOSMWD41310View_B"
+                                            IsEnabled="{Binding IsLicenseValid}" />
+
+                                    </LayoutAnchorable>
+
+
+
+
+                                    <LayoutAnchorable
+                                        Title="功率计_A"
+                                        CanAutoHide="False"
+                                        CanClose="False"
+                                        CanDockAsTabbedDocument="False"
+                                        CanHide="False">
+                                        <ContentControl
+                                            x:Name="LD9204SView"
+                                            Height="Auto"
+                                            prism:RegionManager.RegionName="Region_LD9204SView"
+                                            IsEnabled="{Binding IsLicenseValid}" />
+
+                                    </LayoutAnchorable>
+
+
+
+                                    <LayoutAnchorable
+                                        Title="功率计_B"
+                                        CanAutoHide="False"
+                                        CanClose="False"
+                                        CanDockAsTabbedDocument="False"
+                                        CanHide="False">
+                                        <ContentControl
+                                            x:Name="LD9204S_B_View"
+                                            Height="Auto"
+                                            prism:RegionManager.RegionName="Region_LD9204S_B_View"
+                                            IsEnabled="{Binding IsLicenseValid}" />
+
+                                    </LayoutAnchorable>
+
+
+
+                                    <!--<LayoutAnchorable
                                      Title="托盘"
                                      CanAutoHide="False"
                                      CanClose="False"
@@ -325,25 +390,25 @@
                                          prism:RegionManager.RegionName="Region_TrayView"
                                          IsEnabled="{Binding IsLicenseValid}" />
 
-                                    </LayoutAnchorable>
+                                    </LayoutAnchorable>-->
 
 
 
                                     <LayoutAnchorable
-                                     Title="产品信息"
-                                     CanAutoHide="False"
-                                     CanClose="False"
-                                     CanDockAsTabbedDocument="False"
-                                     CanHide="False">
+                                        Title="产品信息"
+                                        CanAutoHide="False"
+                                        CanClose="False"
+                                        CanDockAsTabbedDocument="False"
+                                        CanHide="False">
                                         <ContentControl
-                                         x:Name="ProductionnInfo"
-                                         Height="Auto"
-                                         prism:RegionManager.RegionName="Region_ProductionView"
-                                         IsEnabled="{Binding IsLicenseValid}" />
+                                            x:Name="ProductionnInfo"
+                                            Height="Auto"
+                                            prism:RegionManager.RegionName="Region_ProductionView"
+                                            IsEnabled="{Binding IsLicenseValid}" />
                                     </LayoutAnchorable>
 
 
-                                    <LayoutAnchorable
+                                    <!--<LayoutAnchorable
                                      Title="异形托盘"
                                      CanAutoHide="False"
                                      CanClose="False"
@@ -355,20 +420,20 @@
                                          prism:RegionManager.RegionName="Region_IrregularTrayView"
                                          IsEnabled="{Binding IsLicenseValid}" />
 
-                                    </LayoutAnchorable>
+                                    </LayoutAnchorable>-->
 
 
                                     <LayoutAnchorable
-                                     Title="光模块"
-                                     CanAutoHide="False"
-                                     CanClose="False"
-                                     CanDockAsTabbedDocument="False"
-                                     CanHide="False">
+                                        Title="光模块"
+                                        CanAutoHide="False"
+                                        CanClose="False"
+                                        CanDockAsTabbedDocument="False"
+                                        CanHide="False">
                                         <ContentControl
-                                         x:Name="LightModuleView"
-                                         Height="Auto"
-                                         prism:RegionManager.RegionName="Region_LightModule800GView"
-                                         IsEnabled="{Binding IsLicenseValid}" />
+                                            x:Name="LightModuleView"
+                                            Height="Auto"
+                                            prism:RegionManager.RegionName="Region_LightModule800GView"
+                                            IsEnabled="{Binding IsLicenseValid}" />
 
                                     </LayoutAnchorable>
 
@@ -377,16 +442,16 @@
 
                                 <LayoutAnchorablePane>
                                     <LayoutAnchorable
-                                     Title="系统控制"
-                                     CanAutoHide="False"
-                                     CanClose="False"
-                                     CanDockAsTabbedDocument="False"
-                                     CanHide="False">
+                                        Title="系统控制"
+                                        CanAutoHide="False"
+                                        CanClose="False"
+                                        CanDockAsTabbedDocument="False"
+                                        CanHide="False">
                                         <ContentControl
-                                         x:Name="AxisSystemControl"
-                                         Height="Auto"
-                                         prism:RegionManager.RegionName="Region_AxisSystemControlView"
-                                         IsEnabled="{Binding IsLicenseValid}" />
+                                            x:Name="AxisSystemControl"
+                                            Height="Auto"
+                                            prism:RegionManager.RegionName="Region_AxisSystemControlView"
+                                            IsEnabled="{Binding IsLicenseValid}" />
                                     </LayoutAnchorable>
                                 </LayoutAnchorablePane>
 
@@ -395,43 +460,43 @@
 
 
                                     <LayoutAnchorable
-                                     Title="耦光系统"
-                                     CanAutoHide="False"
-                                     CanClose="False"
-                                     CanDockAsTabbedDocument="False"
-                                     CanHide="False">
+                                        Title="耦光系统"
+                                        CanAutoHide="False"
+                                        CanClose="False"
+                                        CanDockAsTabbedDocument="False"
+                                        CanHide="False">
                                         <ContentControl
-                                         x:Name="ManualMotionView"
-                                         Height="Auto"
-                                         prism:RegionManager.RegionName="Region_ManualMotionView"
-                                         IsEnabled="{Binding IsLicenseValid}" />
+                                            x:Name="ManualMotionView"
+                                            Height="Auto"
+                                            prism:RegionManager.RegionName="Region_ManualMotionView"
+                                            IsEnabled="{Binding IsLicenseValid}" />
                                     </LayoutAnchorable>
 
 
                                     <LayoutAnchorable
-                                     Title="板卡IO"
-                                     CanAutoHide="False"
-                                     CanClose="False"
-                                     CanDockAsTabbedDocument="False"
-                                     CanHide="False">
+                                        Title="板卡IO"
+                                        CanAutoHide="False"
+                                        CanClose="False"
+                                        CanDockAsTabbedDocument="False"
+                                        CanHide="False">
                                         <ContentControl
-                                         x:Name="IOBoardMonitorView"
-                                         Height="Auto"
-                                         prism:RegionManager.RegionName="Region_IOBoardMonitorView"
-                                         IsEnabled="{Binding IsLicenseValid}" />
+                                            x:Name="IOBoardMonitorView"
+                                            Height="Auto"
+                                            prism:RegionManager.RegionName="Region_IOBoardMonitorView"
+                                            IsEnabled="{Binding IsLicenseValid}" />
                                     </LayoutAnchorable>
 
                                     <LayoutAnchorable
-                                     Title="伺服监控"
-                                     CanAutoHide="False"
-                                     CanClose="False"
-                                     CanDockAsTabbedDocument="False"
-                                     CanHide="False">
+                                        Title="伺服监控"
+                                        CanAutoHide="False"
+                                        CanClose="False"
+                                        CanDockAsTabbedDocument="False"
+                                        CanHide="False">
                                         <ContentControl
-                                         x:Name="AxisIOMonitorView"
-                                         Height="Auto"
-                                         prism:RegionManager.RegionName="Region_AxisIOMonitorView"
-                                         IsEnabled="{Binding IsLicenseValid}" />
+                                            x:Name="AxisIOMonitorView"
+                                            Height="Auto"
+                                            prism:RegionManager.RegionName="Region_AxisIOMonitorView"
+                                            IsEnabled="{Binding IsLicenseValid}" />
                                     </LayoutAnchorable>
 
                                 </LayoutAnchorablePane>

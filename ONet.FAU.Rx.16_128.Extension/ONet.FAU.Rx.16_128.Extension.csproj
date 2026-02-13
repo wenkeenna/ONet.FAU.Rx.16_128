@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -98,8 +98,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\GolightOSMWD41310Helper.cs" />
+    <Compile Include="Common\LD9208Controller.cs" />
+    <Compile Include="Common\MaynuoM8811Helper.cs" />
+    <Compile Include="Common\RuntimeContext.cs" />
     <Compile Include="Model\CouplingData.cs" />
+    <Compile Include="Model\LaserChannelModel.cs" />
     <Compile Include="Model\Parameter1D.cs" />
+    <Compile Include="Model\PowerMeterChannelModel.cs" />
     <Compile Include="ONetFAURx16_128ExtensionModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -115,10 +121,33 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Services\Coupling\ONetCoupling1D.cs" />
-    <Compile Include="Services\RuntimeContext.cs" />
+    <Compile Include="ViewModels\GolightOSMWD41310ViewModel.cs" />
+    <Compile Include="ViewModels\GolightOSMWD41310_B_ViewModel.cs" />
+    <Compile Include="ViewModels\LD9204SViewModel.cs" />
+    <Compile Include="ViewModels\LD9204S_B_ViewModel.cs" />
+    <Compile Include="ViewModels\MaynuoM8811ViewModel.cs" />
     <Compile Include="ViewModels\ONetCoupling1DViewModel.cs" />
+    <Compile Include="ViewModels\OpticalModuleViewModel.cs" />
+    <Compile Include="Views\GolightOSMWD41310View.xaml.cs">
+      <DependentUpon>GolightOSMWD41310View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GolightOSMWD41310_B_View.xaml.cs">
+      <DependentUpon>GolightOSMWD41310_B_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LD9204SView.xaml.cs">
+      <DependentUpon>LD9204SView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LD9204S_B_View.xaml.cs">
+      <DependentUpon>LD9204S_B_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MaynuoM8811View.xaml.cs">
+      <DependentUpon>MaynuoM8811View.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\ONetCoupling1DView.xaml.cs">
       <DependentUpon>ONetCoupling1DView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\OpticalModuleView.xaml.cs">
+      <DependentUpon>OpticalModuleView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -130,11 +159,33 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Page Include="Views\GolightOSMWD41310View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GolightOSMWD41310_B_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LD9204SView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LD9204S_B_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MaynuoM8811View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\ONetCoupling1DView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OpticalModuleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -220,9 +220,9 @@ namespace ONet.FAU.Rx._16_128.ViewModels
 
 
                 string lastProject = ConfigurationManager.AppSettings["LastOpenedProject"];//从运行根目录的App.config中获取上次加载项目名称
-                temple = _initializer.InitProductParameters();//获取产品参数模板
+                //temple = _initializer.InitProductParameters();//获取产品参数模板
                 path = _configService.GetConfigPath("TaskFlow");//获取流程文件目录，产品参数跟随流程文件创建
-                Parameters = ParameterStorageService.LoadAndMerge(path, lastProject, temple);//合并本地产品参数和模板参数
+                Parameters = ParameterStorageService.Load(path, lastProject);//合并本地产品参数和模板参数
 
                 //加载进数据绑定容器
                 foreach (var parameter in Parameters)

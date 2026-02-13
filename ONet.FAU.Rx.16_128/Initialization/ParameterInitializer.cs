@@ -76,7 +76,70 @@ namespace ONet.FAU.Rx._16_128.Initialization
                     },
 
 
+               
+
+
+
+                };
+        }
+
+        ObservableCollection<ParameterModel> IParameterInitializer.InitProductParameters()
+        {
+            return new ObservableCollection<ParameterModel>
+                {
+                    new ParameterModel
+                    {
+                        Name = "[左]托盘取料补偿",
+                        IsRoot = true,
+                        Children = new ObservableCollection<ParameterModel>
+                        {
+                            ParameterModel.Create("[左]托盘取料补偿","X", "0", ParameterType.Double),
+                            ParameterModel.Create("[左]托盘取料补偿","Y", "0", ParameterType.Double),
+
+                        }
+                    },
+                    new ParameterModel
+                    {
+                        Name = "[右]托盘取料补偿",
+                        IsRoot = true,
+                        Children = new ObservableCollection<ParameterModel>
+                        {
+                            ParameterModel.Create("[右]托盘取料补偿","X", "0", ParameterType.Double),
+                            ParameterModel.Create("[右]托盘取料补偿","Y", "0", ParameterType.Double),
+                        }
+                    },
+                 
                        new ParameterModel
+                    {
+                        Name = "Lens拍照位置",
+                        IsRoot = true,
+                        Children = new ObservableCollection<ParameterModel>
+                        {
+                            ParameterModel.Create("Lens拍照位置","Left_X", "0", ParameterType.Double),
+                            ParameterModel.Create("Lens拍照位置","Left_Y", "0", ParameterType.Double),
+
+                            ParameterModel.Create("Lens拍照位置","Right_X", "0", ParameterType.Double),
+                            ParameterModel.Create("Lens拍照位置","Right_Y", "0", ParameterType.Double),
+
+
+                        }
+                    },
+
+                    new ParameterModel
+                    {
+                        Name = "Lens定位补偿",
+                        IsRoot = true,
+                        Children = new ObservableCollection<ParameterModel>
+                        {
+                            ParameterModel.Create("Lens定位补偿","Left_X", "0", ParameterType.Double),
+                            ParameterModel.Create("Lens定位补偿","Left_Y", "0", ParameterType.Double),
+
+                            ParameterModel.Create("Lens定位补偿","Right_X", "0", ParameterType.Double),
+                            ParameterModel.Create("Lens定位补偿","Right_Y", "0", ParameterType.Double),
+                        }
+                    },
+
+                            new ParameterModel
                     {
                         Name = "点胶校准",
                         IsRoot = true,
@@ -102,10 +165,16 @@ namespace ONet.FAU.Rx._16_128.Initialization
                         Children = new ObservableCollection<ParameterModel>
                         {
                              ParameterModel.Create("仪表端口号","UVLight", "COM1", ParameterType.String),
-                             ParameterModel.Create("仪表端口号","NewPort", "COM2", ParameterType.String),
+
                              ParameterModel.Create("仪表端口号","DC65", "COM3", ParameterType.String),
+
                              ParameterModel.Create("仪表端口号","M8811", "COM4", ParameterType.String),
-                             ParameterModel.Create("仪表端口号","ONetModule", "COM10", ParameterType.String),
+
+                             ParameterModel.Create("仪表端口号","光功率计", "COM2", ParameterType.String),
+                             ParameterModel.Create("仪表端口号","光功率计_B", "COM6", ParameterType.String),
+
+                             ParameterModel.Create("仪表端口号","激光光源", "COM2", ParameterType.String),
+
                         }
                     },
 
@@ -149,117 +218,19 @@ namespace ONet.FAU.Rx._16_128.Initialization
                              ParameterModel.Create("点胶补偿","RightY", "0.0", ParameterType.Double),
                         }
                     },
-                    new ParameterModel
-                    {
-                        Name = "反射镜角度补偿",
-                        IsRoot = true,
-                        IsAddDataBind=true,
-                        Children = new ObservableCollection<ParameterModel>
-                        {
-                             ParameterModel.Create("反射镜角度补偿","LeftAngle", "0.0", ParameterType.Double),
-                             ParameterModel.Create("反射镜角度补偿","RightAngle", "0.0", ParameterType.Double),
 
-                        }
-                    }
-
-
-                };
-        }
-
-        ObservableCollection<ParameterModel> IParameterInitializer.InitProductParameters()
-        {
-            return new ObservableCollection<ParameterModel>
-                {
-                    new ParameterModel
-                    {
-                        Name = "[左]托盘取料补偿",
-                        IsRoot = true,
-                        Children = new ObservableCollection<ParameterModel>
-                        {
-                            ParameterModel.Create("[左]托盘取料补偿","X", "0", ParameterType.Double),
-                            ParameterModel.Create("[左]托盘取料补偿","Y", "0", ParameterType.Double),
-
-                        }
-                    },
-                    new ParameterModel
-                    {
-                        Name = "[右]托盘取料补偿",
-                        IsRoot = true,
-                        Children = new ObservableCollection<ParameterModel>
-                        {
-                            ParameterModel.Create("[右]托盘取料补偿","X", "0", ParameterType.Double),
-                            ParameterModel.Create("[右]托盘取料补偿","Y", "0", ParameterType.Double),
-                        }
-                    },
-                    new ParameterModel
-                    {
-                        Name = "激光器间距",
-                        IsRoot = true,
-                        Children = new ObservableCollection<ParameterModel>
-                        {
-                            ParameterModel.Create("激光器间距","L_LD2", "0", ParameterType.Double),
-                            ParameterModel.Create("激光器间距","L_LD3", "0", ParameterType.Double),
-                            ParameterModel.Create("激光器间距","L_LD4", "0", ParameterType.Double),
-
-                            ParameterModel.Create("激光器间距","R_LD2", "0", ParameterType.Double),
-                            ParameterModel.Create("激光器间距","R_LD3", "0", ParameterType.Double),
-                            ParameterModel.Create("激光器间距","R_LD4", "0", ParameterType.Double),
-                        }
-                    },
-
-                     new ParameterModel
-                    {
-                        Name = "LDPIC拍照位置",
-                        IsRoot = true,
-                        Children = new ObservableCollection<ParameterModel>
-                        {
-                            ParameterModel.Create("LDPIC拍照位置","LD[1/2]_X", "0", ParameterType.Double),
-                            ParameterModel.Create("LDPIC拍照位置","LD[1/2]_Y", "0", ParameterType.Double),
-
-                            ParameterModel.Create("LDPIC拍照位置","LD[3/4]_X", "0", ParameterType.Double),
-                            ParameterModel.Create("LDPIC拍照位置","LD[3/4]_Y", "0", ParameterType.Double),
-
-
-
-                            ParameterModel.Create("LDPIC拍照位置","PIC[1/2]_X", "0", ParameterType.Double),
-                            ParameterModel.Create("LDPIC拍照位置","PIC[1/2]_Y", "0", ParameterType.Double),
-
-                            ParameterModel.Create("LDPIC拍照位置","PIC[3/4]_X", "0", ParameterType.Double),
-                            ParameterModel.Create("LDPIC拍照位置","PIC[3/4]_Y", "0", ParameterType.Double),
-                        }
-                    },
 
                        new ParameterModel
                     {
-                        Name = "Lens拍照位置",
+                        Name = "仪表扩展参数",
                         IsRoot = true,
+                            IsAddDataBind=true,
                         Children = new ObservableCollection<ParameterModel>
                         {
-                            ParameterModel.Create("Lens拍照位置","Left_X", "0", ParameterType.Double),
-                            ParameterModel.Create("Lens拍照位置","Left_Y", "0", ParameterType.Double),
-
-                            ParameterModel.Create("Lens拍照位置","Right_X", "0", ParameterType.Double),
-                            ParameterModel.Create("Lens拍照位置","Right_Y", "0", ParameterType.Double),
-
+                             ParameterModel.Create("仪表扩展参数","UVLightCount","1", ParameterType.Int),
 
                         }
                     },
-
-                    new ParameterModel
-                    {
-                        Name = "Lens定位补偿",
-                        IsRoot = true,
-                        Children = new ObservableCollection<ParameterModel>
-                        {
-                            ParameterModel.Create("Lens定位补偿","Left_X", "0", ParameterType.Double),
-                            ParameterModel.Create("Lens定位补偿","Left_Y", "0", ParameterType.Double),
-
-                            ParameterModel.Create("Lens定位补偿","Right_X", "0", ParameterType.Double),
-                            ParameterModel.Create("Lens定位补偿","Right_Y", "0", ParameterType.Double),
-
-
-                        }
-                    }
 
 
 

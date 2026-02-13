@@ -4,17 +4,17 @@
 library
 C#
 .cs
-F:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128.Extension\obj\x64\Debug\
+E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128.Extension\obj\x64\Debug\
 ONet.FAU.Rx._16_128.Extension
 none
 false
 DEBUG;TRACE
 
-11926643337
+71160902393
 
-11-539816249
-25-436124631
-Views\ONetCoupling1DView.xaml;
+28-1711844554
+25-1247532665
+Views\GolightOSMWD41310View.xaml;Views\GolightOSMWD41310_B_View.xaml;Views\LD9204SView.xaml;Views\LD9204S_B_View.xaml;Views\MaynuoM8811View.xaml;Views\ONetCoupling1DView.xaml;Views\OpticalModuleView.xaml;
 
 True
 

@@ -495,14 +495,26 @@ namespace ONet.FAU.Rx._16_128.Initialization
             };
             system.AddOutput(output);
 
+            output = new DigitalOutput()
+            {
+                CardIndex = 1,
+                Name = "左夹爪",
+                Address = 2,
+                Description = "",
+            };
+            system.AddOutput(output);
+
+
+            output = new DigitalOutput()
+            {
+                CardIndex = 1,
+                Name = "右夹爪",
+                Address = 3,
+                Description = "",
+            };
+            system.AddOutput(output);
 
             #endregion
-
-
-            //system.HomingItems.Add(new HomingItem() { StepType = HomeStepType.SetOutput, Priority = 0, OutputName = "点胶气缸", OutPutState = true, InputName = "点胶上限", InputState = false, Description = "关闭点胶气缸" });
-            //system.HomingItems.Add(new HomingItem() { StepType = HomeStepType.SetOutput, Priority = 0, OutputName = "UV气缸", OutPutState = true, InputName = "UV上限", InputState = false, Description = "关闭UV气缸" });
-
-
 
 
             system.HomingItems.Add(new HomingItem() { StepType = HomeStepType.SetOutput, OutputName = "点胶气缸", OutPutState = false, InputName = "点胶上限", InputState = true, Priority = 0, Description = "收回点胶气缸" });
@@ -770,6 +782,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
                             PositionText="Gx",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                            StepSize=0.1,
                             IsButtonVisible=true
                         },
 
@@ -781,6 +794,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
                               PositionText="Gy",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                             StepSize=0.1,
                             IsButtonVisible=true
                         },
 
@@ -802,6 +816,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
                                PositionText="Cam",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                             StepSize=0.1,
                             IsButtonVisible=true
                         },
 
@@ -824,6 +839,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
                             PositionText="Glue",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                             StepSize=0.1,
                             IsButtonVisible=true
                         },
 
@@ -844,6 +860,13 @@ namespace ONet.FAU.Rx._16_128.Initialization
                         },
 
                         new AxisViewModel (motionSystem,MotionAxisNames.Default,eventAggregator,false)
+                        {
+                            NegativeContent="default-",
+                            PositiveContent="default+",
+                            StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                            IsButtonVisible=false
+                        },
+                           new AxisViewModel (motionSystem,MotionAxisNames.Default,eventAggregator,false)
                         {
                             NegativeContent="default-",
                             PositiveContent="default+",
@@ -870,6 +893,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
                             PositionText="X",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                              StepSize=0.1,
                             IsButtonVisible=true
                         },
 
@@ -881,6 +905,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
                                   PositionText="Y",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                              StepSize=0.1,
                             IsButtonVisible=true
                         },
 
@@ -893,6 +918,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
                             PositionText="Z",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                              StepSize=0.1,
                             IsButtonVisible=true
                         },
 
@@ -923,6 +949,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
                                   PositionText="RX",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                              StepSize=0.1,
                             IsButtonVisible=true
                         },
 
@@ -935,6 +962,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
                                   PositionText="RY",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                              StepSize=0.1,
                             IsButtonVisible=true
                         },
 
@@ -946,8 +974,20 @@ namespace ONet.FAU.Rx._16_128.Initialization
                             PositionText="RZ",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                              StepSize=0.1,
                             IsButtonVisible=true
                         },
+
+                          new AxisViewModel (motionSystem,MotionAxisNames.Default,eventAggregator, false)
+                        {
+
+                            NegativeContent="default-",
+                            PositiveContent="default+",
+                            StepLab="defaelt",
+                            IsButtonVisible=false
+                        },
+
+
                     }
                 },
 
@@ -969,6 +1009,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
                             PositionText="X",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                              StepSize=0.1,
                             IsButtonVisible=true
                         },
 
@@ -980,6 +1021,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
                             PositionText="Y",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                              StepSize=0.1,
                             IsButtonVisible=true
                         },
 
@@ -992,6 +1034,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
                                   PositionText="Z",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                              StepSize=0.1,
                             IsButtonVisible=true
                         },
 
@@ -1022,6 +1065,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
                                   PositionText="RX",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                              StepSize=0.1,
                             IsButtonVisible=true
                         },
 
@@ -1034,6 +1078,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
                                   PositionText="RY",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                              StepSize=0.1,
                             IsButtonVisible=true
                         },
 
@@ -1045,10 +1090,18 @@ namespace ONet.FAU.Rx._16_128.Initialization
                             PositionText="RZ",
                             Position=0.0000,
                             StepList=new List<double>(){0.0001,0.0002,0.0005,0.001,0.002,0.005,0.01,0.02,0.05,0.1,0.5,1,2,5,10},
+                              StepSize=0.1,
                             IsButtonVisible=true
-                        }
+                        },
 
+                          new AxisViewModel (motionSystem,MotionAxisNames.Default,eventAggregator, false)
+                        {
 
+                            NegativeContent="default-",
+                            PositiveContent="default+",
+                            StepLab="defaelt",
+                            IsButtonVisible=false
+                        },
                     }
                 }
             };

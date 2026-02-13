@@ -13,6 +13,7 @@ using DM.UserManagement.Services;
 using DM.Vision.Interfaces;
 using DM.Vision.Services;
 using DryIoc;
+using ONet.FAU.Rx._16_128.Extension.Common;
 using ONet.FAU.Rx._16_128.Extension.Services;
 using ONet.FAU.Rx._16_128.Initialization;
 using ONet.FAU.Rx._16_128.ViewModels;
@@ -30,6 +31,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using static DM.InstrumentKit.Services.AD8622Helper;
 
 namespace ONet.FAU.Rx._16_128
 {
@@ -67,7 +69,21 @@ namespace ONet.FAU.Rx._16_128
 
             var logger = containerRegistry.GetContainer().Resolve<ILogger>();//从容器获取日志实例
 
-            containerRegistry.RegisterSingleton<AD8622Helper>(() => new AD8622Helper());//三轴压力传感器注入
+
+
+            var myConfig = new ADChannelConfig
+            {
+                LeftX = 2,
+                LeftY = 1,
+                LeftZ = 0,
+
+                RightX = 5,
+                RightY = 4,
+                RightZ = 3,
+                GlueZ = 6
+            };
+
+            containerRegistry.RegisterSingleton<AD8622Helper>(() => new AD8622Helper(myConfig));//三轴压力传感器注入
 
             containerRegistry.RegisterSingleton<UPS81BHelper>(() => new UPS81BHelper(logger));//UV灯注入
 
@@ -101,7 +117,7 @@ namespace ONet.FAU.Rx._16_128
 
             containerRegistry.RegisterInstance<ITrayGridService>(trayGridService);//托盘注入
 
-            containerRegistry.RegisterSingleton<UserService>(() => new UserService("D:\\MyApp-Temp\\Config\\Users.db"));//用户数据库文件路径
+            containerRegistry.RegisterSingleton<UserService>(() => new UserService("D:\\MyApp\\Config\\Users.db"));//用户数据库文件路径
 
             //var motionSystemService = MotionSystemInitializer.Initialize(eventAggregator);//初始化轴实例-在打样机台测试
 
@@ -109,8 +125,20 @@ namespace ONet.FAU.Rx._16_128
 
             containerRegistry.RegisterInstance<IMotionSystemService>(motionSystemService);//轴实例注入
 
-            var maynuoM8811 = new MaynuoM8811Helper();
-            containerRegistry.RegisterInstance<MaynuoM8811Helper>(maynuoM8811);//源表实例注入
+            var maynuoM8811 = new Extension.Common.MaynuoM8811Helper(logger);
+            containerRegistry.RegisterInstance<Extension.Common.MaynuoM8811Helper>(maynuoM8811);//源表实例注入
+
+
+            containerRegistry.RegisterInstance<Extension.Common.LD9208Controller>(new LD9208Controller(), "OpticalPowerMeterA");//光功率计注入
+            containerRegistry.RegisterInstance<Extension.Common.LD9208Controller>(new LD9208Controller(), "OpticalPowerMeterB");//光功率计注入
+
+
+            containerRegistry.RegisterInstance<Extension.Common.GolightOSMWD41310Helper>(new GolightOSMWD41310Helper(logger), "LaserLightSourceA");//光源注入
+            containerRegistry.RegisterInstance<Extension.Common.GolightOSMWD41310Helper>(new GolightOSMWD41310Helper(logger), "LaserLightSourceB");//光源注入
+
+
+
+
 
             containerRegistry.RegisterSingleton<CalibrationServices>();//标定转换服务注入
 
@@ -130,9 +158,9 @@ namespace ONet.FAU.Rx._16_128
             containerRegistry.RegisterInstance<IVisionProcess>(visionProcess);//注册图像处理实例
 
 
-
-
             var runtimeContext = containerRegistry.GetContainer().Resolve<IRuntimeContext>();
+
+
 
             var ad8622 = containerRegistry.GetContainer().Resolve<AD8622Helper>();
 
@@ -143,7 +171,7 @@ namespace ONet.FAU.Rx._16_128
             var dc65 = containerRegistry.GetContainer().Resolve<DC65LightSourceHelper>();
 
 
-            var m8811 = containerRegistry.GetContainer().Resolve<MaynuoM8811Helper>();
+            var m8811 = containerRegistry.GetContainer().Resolve<Extension.Common.MaynuoM8811Helper>();
 
             ToolExecutionContext toolExecutionContext = new ToolExecutionContext();
             toolExecutionContext.Set("DataBindingContext", dataBindingContext); //将数据绑定容器添加到工具执行上下文
@@ -180,9 +208,9 @@ namespace ONet.FAU.Rx._16_128
 
             moduleCatalog.AddModule<DM.Vision.Vision_Module>();//视觉模块
 
-            //  moduleCatalog.AddModule<DM.AnalogCamLib.AnalogCam_Module>();//模拟信号相机模块
+            moduleCatalog.AddModule<DM.AnalogCamLib.AnalogCam_Module>();//模拟信号相机模块
 
-            //moduleCatalog.AddModule<DM.Foundation.UserPermission.PermissionModule>();//用户权限模块
+         
 
 
             moduleCatalog.AddModule<DM.UserManagement.UserManagement_Module>();
@@ -196,6 +224,9 @@ namespace ONet.FAU.Rx._16_128
             moduleCatalog.AddModule<DM.InstrumentKit.InstrumentKit_Module>();//仪表模块
 
             moduleCatalog.AddModule<DM.TrayMap.TrayModule>();//上料托盘模块
+
+
+            moduleCatalog.AddModule<ONet.FAU.Rx._16_128.Extension.ONetFAURx16_128ExtensionModule>();//客户定制模块
 
 
         }

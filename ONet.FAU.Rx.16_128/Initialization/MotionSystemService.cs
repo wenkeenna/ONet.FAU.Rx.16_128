@@ -3,6 +3,8 @@ using DM.Foundation.Logging.Interfaces;
 using DM.Foundation.Motion.Interfaces;
 using DM.Foundation.Motion.Models;
 using DM.Foundation.Motion.MotionSdk;
+using DM.Foundation.Motion.Services;
+using DM.Foundation.Shared.Events;
 using DM.Foundation.Shared.Models;
 using Prism.Events;
 using System;
@@ -140,22 +142,266 @@ namespace ONet.FAU.Rx._16_128.Initialization
         /// <param name="dataBinding"></param>
         /// <returns></returns>
         /// <exception cref="NotImplementedException"></exception>
-        Task IMotionSystemService.ExecuteHomingSequenceAsync(CancellationTokenSource Cts, IDataBindingContext dataBinding)
+        public async Task ExecuteHomingSequenceAsync(CancellationTokenSource Cts, IDataBindingContext dataBinding)
         {
-            return null;
+            IsRunning = true;
+            //Cts = new CancellationTokenSource();
+
+
+            try
+            {
+                var token = Cts.Token;
+                // 1. 按优先级排序分组
+                var groups = HomingItems
+                    .GroupBy(i => i.Priority)
+                    .OrderBy(g => g.Key); // 从低优先级到高
+
+                foreach (var group in groups)
+                {
+                    var tasks = new List<Task>();
+                    foreach (var item in group)
+                    {
+
+                        if (item.StepType == DM.Foundation.Shared.Enums.HomeStepType.SetOutput)
+                        {
+                            tasks.Add(HomeStepOutput(Cts, item, 1500));
+                        }
+                        else if (item.StepType == DM.Foundation.Shared.Enums.HomeStepType.Home)
+                        {
+
+                            if (AxisMap.TryGetValue(item.AxisName, out var axis))
+                            {
+
+                                if (item.Speed > axis.AxisPara.MaxSpeed)
+                                {
+                                    item.Speed = axis.AxisPara.MaxSpeed;
+                                }
+
+
+                                tasks.Add(axis.HomeAsync(item.Speed, 0, token));
+                            }
+                        }
+                        else if (item.StepType == DM.Foundation.Shared.Enums.HomeStepType.AbsMove)
+                        {
+                            string[] command = item.BindingParamName.Split(':');//解析获取绑定参数键值
+                            if (command.Length == 2)
+                            {
+                                var data = dataBinding.Get(command[0], command[1]);
+
+                                if (data == null)
+                                {
+                                    //_eventAggregator.GetEvent<Event_Message>().Publish("回零获取数据绑定错误，请检查");
+                                    //_logger.Error($"回零获取数据绑定错误，请检查{command[0]},{command[1]}");
+                                    PushMessage($"回零获取数据绑定错误，请检查{command[0]},{command[1]}");
+                                    throw new Exception($"Error: 获取绑定数据错误{command[0]},{command[1]}");
+                                }
+
+                                if (AxisMap.TryGetValue(item.AxisName, out var axis))
+                                {
+                                    tasks.Add(axis.MoveAbsAsync(Convert.ToDouble(data.Value), item.Speed, token));
+                                }
+                            }
+
+                        }
+
+                    }
+
+                    await Task.WhenAll(tasks); // 等当前优先级组全部完成
+
+                    foreach (var item in group)
+                    {
+                        //_eventAggregator.GetEvent<Event_Message>().Publish($"{item.AxisName},优先级:{item.Priority},回零完成。");
+                        //_logger.Error($"{item.AxisName},优先级:{item.Priority},回零完成。");
+                        PushMessage($"{item.AxisName},优先级:{item.Priority},回零完成。");
+                    }
+                }
+
+                //MessageBox.Show("所有轴回零完成");
+
+                //_eventAggregator.GetEvent<Event_Message>().Publish("所有轴回零完成");
+                //_logger.Error("所有轴回零完成");
+                PushMessage("所有轴回零完成");
+            }
+            catch (OperationCanceledException)
+            {
+                IsRunning = false;
+                //MessageBox.Show("回零被用户取消");
+                //_eventAggregator.GetEvent<Event_Message>().Publish("回零被用户取消");
+                //_logger.Error("回零被用户取消");
+                PushMessage("回零被用户取消");
+            }
+            catch (Exception ex)
+            {
+                IsRunning = false;
+                _eventAggregator.GetEvent<Event_Message>().Publish(ex.Message);
+            }
+            finally
+            {
+
+            }
+
+
+
+            return;
         }
+
+        private async Task HomeStepOutput(CancellationTokenSource tokenSource, HomingItem item, int delaytime)
+        {
+            try
+            {
+                OutputMap.TryGetValue(item.OutputName, out IDigitalOutput output);
+                InputMap.TryGetValue(item.InputName, out IDigitalInput input);
+
+
+                LS_DMC3000.SetOutPut((DM.Foundation.Motion.Models.DigitalOutput)output, item.OutPutState);
+
+                DateTime startTime = DateTime.Now;//起始时间
+
+                TimeSpan elapsedTime;
+
+
+                //_eventAggregator.GetEvent<Event_Message>().Publish($"{output.Name}:执行。");
+                //_logger.Error($"{output.Name}:执行。");
+                PushMessage($"{output.Name}:执行。");
+                do
+                {
+                    if (tokenSource.IsCancellationRequested)
+                    {
+                        PushMessage("取消回零");
+                        throw new OperationCanceledException($"Error: 取消回零");
+                    }
+
+                    if (LS_DMC3000.GetInPut((DM.Foundation.Motion.Models.DigitalInput)input) == item.InputState)
+                    {
+                        // _eventAggregator.GetEvent<Event_Message>().Publish($"{output.Name},{input.Name}:执行完成。");
+                        PushMessage($"{output.Name},{input.Name}:执行完成。");
+                        return;
+                    }
+
+                    // 计算耗时
+                    elapsedTime = DateTime.Now - startTime;
+
+                    await Task.Delay(10);
+                } while (elapsedTime < TimeSpan.FromMilliseconds(delaytime));
+
+
+                PushMessage($"{output.Name}:执行超时，{elapsedTime.ToString()}ms,请检查。");
+                throw new Exception($"执行超时");
+
+            }
+            catch (Exception ex)
+            {
+
+                PushMessage(ex.ToString());
+                throw new Exception($"Error: {ex.Message}");
+            }
+        }
+
+        private void PushMessage(string msg)
+        {
+            _eventAggregator.GetEvent<Event_Message>().Publish(msg);
+            _logger.Info(msg);
+        }
+
+
+
+
+
         /// <summary>
         /// 执行复位
         /// </summary>
         /// <param name="Cts"></param>
         /// <param name="dataBinding"></param>
         /// <returns></returns>
-        Task IMotionSystemService.ExecuteResetSequenceAsync(CancellationTokenSource Cts, IDataBindingContext dataBinding)
+        public async Task ExecuteResetSequenceAsync(CancellationTokenSource Cts, IDataBindingContext dataBinding)
         {
-            return null;
+            IsRunning = true;
+            //Cts = new CancellationTokenSource();
+
+
+            try
+            {
+                var token = Cts.Token;
+                // 1. 按优先级排序分组
+                var groups = ResetItems
+                    .GroupBy(i => i.Priority)
+                    .OrderBy(g => g.Key); // 从低优先级到高
+
+                foreach (var group in groups)
+                {
+                    var tasks = new List<Task>();
+                    foreach (var item in group)
+                    {
+
+
+                        if (item.StepType == DM.Foundation.Shared.Enums.HomeStepType.AbsMove)
+                        {
+                            string[] command = item.BindingParamName.Split(':');//解析获取绑定参数键值
+                            if (command.Length == 2)
+                            {
+                                var data = dataBinding.Get(command[0], command[1]);
+
+                                if (data == null)
+                                {
+                                    //_eventAggregator.GetEvent<Event_Message>().Publish("复位获取数据绑定错误，请检查");
+                                    //_logger.Error($"复位获取数据绑定错误{command[0]},{command[1]}");
+                                    PushMessage($"复位获取数据绑定错误{command[0]},{command[1]}");
+                                    throw new Exception($"Error: 获取绑定数据错误{command[0]},{command[1]}");
+                                }
+
+                                if (AxisMap.TryGetValue(item.AxisName, out var axis))
+                                {
+
+                                    if (item.Speed > axis.AxisPara.MaxSpeed)
+                                    {
+                                        item.Speed = axis.AxisPara.MaxSpeed;
+                                    }
+
+
+
+                                    tasks.Add(axis.MoveAbsAsync(Convert.ToDouble(data.Value), item.Speed, token));
+                                }
+                            }
+
+
+                        }
+                        else if (item.StepType == DM.Foundation.Shared.Enums.HomeStepType.SetOutput)
+                        {
+                            tasks.Add(HomeStepOutput(Cts, item, 1500));
+                        }
+
+                    }
+
+                    await Task.WhenAll(tasks); // 等当前优先级组全部完成
+
+                    foreach (var item in group)
+                    {
+                        //_eventAggregator.GetEvent<Event_Message>().Publish($"{item.AxisName},优先级:{item.Priority},复位完成。");
+                        //_logger.Error($"{item.AxisName},优先级:{item.Priority},复位完成。");
+                        PushMessage($"{item.AxisName},优先级:{item.Priority},复位完成。");
+                    }
+                }
+                PushMessage("所有轴复位完成");
+            }
+            catch (OperationCanceledException)
+            {
+                IsRunning = false;
+                //MessageBox.Show("回零被用户取消");
+                //_eventAggregator.GetEvent<Event_Message>().Publish("复位被用户取消");
+                //_logger.Error("复位被用户取消");
+                PushMessage("复位被用户取消");
+            }
+            catch (Exception ex)
+            {
+                IsRunning = false;
+                //_eventAggregator.GetEvent<Event_Message>().Publish(ex.Message);
+                //_logger.Error(ex.Message);
+                PushMessage(ex.ToString());
+            }
+            return;
         }
 
-        void IMotionSystemService.Cancel()
+       public void Cancel()
         {
 
         }
@@ -165,7 +411,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
         /// </summary>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        bool IMotionSystemService.Initialize()
+        public bool Initialize()
         {
 
 
@@ -181,7 +427,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
         /// </summary>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        bool IMotionSystemService.DownloadConfigFile()
+        public bool DownloadConfigFile()
         {
             try
             {
@@ -216,7 +462,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
         /// <param name="input"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        bool IMotionSystemService.ReadInput(DigitalInput input)
+        public bool ReadInput(DigitalInput input)
         {
             try
             {
@@ -241,7 +487,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
         /// <param name="status"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        bool IMotionSystemService.WriteOutput(DigitalOutput output, bool status)
+        public bool WriteOutput(DigitalOutput output, bool status)
         {
             try
             {
@@ -266,7 +512,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
         /// <param name="output"></param>
         /// <returns></returns>
         /// <exception cref="Exception"></exception>
-        bool IMotionSystemService.ReadOutput(DigitalOutput output)
+        public bool ReadOutput(DigitalOutput output)
         {
             try
             {
@@ -290,7 +536,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
         /// </summary>
         /// <param name="cardIndex"></param>
         /// <returns></returns>
-        async Task<bool> IMotionSystemService.EmergencyStopAsync(int cardIndex)
+        public async Task<bool> EmergencyStopAsync(int cardIndex)
         {
             await Task.Delay(1000);
             return false;
@@ -306,7 +552,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
         /// <param name="dec"></param>
         /// <param name="stopVel"></param>
         /// <returns></returns>
-        bool IMotionSystemService.SetProfile(ushort card, ushort axis, int minVel, int maxVel, double acc, double dec, int stopVel)
+        public bool SetProfile(ushort card, ushort axis, int minVel, int maxVel, double acc, double dec, int stopVel)
         {
             return false;
         }

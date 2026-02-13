@@ -141,7 +141,7 @@ namespace ONet.FAU.Rx._16_128.Views
 
 
         #region 加载/保存布局/恢复布局
-        private string AvaLonDockFilePath = "D:\\MyApp-Temp\\Layout";
+        private string AvaLonDockFilePath = "D:\\MyApp\\Layout";
         private void LoadLayout(string layoutFileName, DockingManager dockingManager)
         {
             try

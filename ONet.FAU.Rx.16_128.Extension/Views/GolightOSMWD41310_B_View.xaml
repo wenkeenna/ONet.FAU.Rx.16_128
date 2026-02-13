@@ -1,0 +1,236 @@
+﻿<UserControl
+    x:Class="ONet.FAU.Rx._16_128.Extension.Views.GolightOSMWD41310_B_View"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:VM="clr-namespace:ONet.FAU.Rx._16_128.Extension.ViewModels"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:ONet.FAU.Rx._16_128.Extension.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    d:DataContext="{d:DesignInstance Type=VM:GolightOSMWD41310_B_ViewModel}"
+    d:DesignHeight="230"
+    d:DesignWidth="400"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <ResourceDictionary Source="pack://application:,,,/DM.Foundation.Styles;component/Themes/Themes.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Border
+            Margin="2"
+            Background="#F5F5F5"
+            BorderBrush="#333"
+            BorderThickness="1"
+            CornerRadius="3">
+            <StackPanel Margin="5">
+                <Grid Margin="0,0,0,5">
+                    <Border
+                        Padding="6,2"
+                        HorizontalAlignment="Left"
+                        Background="#C0392B"
+                        CornerRadius="2">
+                        <TextBlock
+                            FontSize="11"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            Text="激光光源控制[B]" />
+                    </Border>
+                    <TextBlock
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        FontSize="10"
+                        FontStyle="Italic"
+                        Foreground="Gray"
+                        Text="Laser Source Unit" />
+                </Grid>
+
+                <UniformGrid Columns="2" Rows="2">
+                    <Border
+                        Margin="2"
+                        Padding="6"
+                        Background="White"
+                        BorderBrush="#CCC"
+                        BorderThickness="1"
+                        CornerRadius="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock
+                                FontSize="10"
+                                FontWeight="Bold"
+                                Foreground="#666"
+                                Text="CH1" />
+
+                            <StackPanel
+                                Grid.Row="1"
+                                Margin="0,2"
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    FontSize="32"
+                                    FontWeight="Bold"
+                                    Foreground="{Binding Ch1.StatusColor, FallbackValue='Gray'}"
+                                    Text="{Binding Ch1.ActualPower, FallbackValue='0.000', StringFormat={}{0:F4}}" />
+                                <TextBlock
+                                    Margin="2,0,0,6"
+                                    VerticalAlignment="Bottom"
+                                    FontSize="12"
+                                    Foreground="#999"
+                                    Text="mW" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <Border
+                        Margin="2"
+                        Padding="6"
+                        Background="White"
+                        BorderBrush="#CCC"
+                        BorderThickness="1"
+                        CornerRadius="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                FontSize="10"
+                                FontWeight="Bold"
+                                Foreground="#666"
+                                Text="CH2" />
+                            <StackPanel
+                                Grid.Row="1"
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    FontSize="32"
+                                    FontWeight="Bold"
+                                    Foreground="{Binding Ch2.StatusColor, FallbackValue='Gray'}"
+                                    Text="{Binding Ch2.ActualPower, FallbackValue='0.000', StringFormat={}{0:F4}}" />
+                                <TextBlock
+                                    Margin="2,0,0,6"
+                                    VerticalAlignment="Bottom"
+                                    FontSize="12"
+                                    Foreground="#999"
+                                    Text="mW" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <Border
+                        Grid.Row="1"
+                        Margin="2"
+                        Padding="6"
+                        Background="White"
+                        BorderBrush="#CCC"
+                        BorderThickness="1"
+                        CornerRadius="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                FontSize="10"
+                                FontWeight="Bold"
+                                Foreground="#666"
+                                Text="CH3" />
+                            <StackPanel
+                                Grid.Row="1"
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    FontSize="32"
+                                    FontWeight="Bold"
+                                    Foreground="{Binding Ch3.StatusColor, FallbackValue=Gray}"
+                                    Text="{Binding Ch3.ActualPower, FallbackValue='0.000', StringFormat={}{0:F4}}" />
+                                <TextBlock
+                                    Margin="2,0,0,6"
+                                    VerticalAlignment="Center"
+                                    FontSize="12"
+                                    Foreground="#999"
+                                    Text="mW" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+
+                    <Border
+                        Grid.Row="1"
+                        Margin="2"
+                        Padding="6"
+                        Background="White"
+                        BorderBrush="#CCC"
+                        BorderThickness="1"
+                        CornerRadius="2">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+                                FontSize="10"
+                                FontWeight="Bold"
+                                Foreground="#666"
+                                Text="CH4" />
+                            <StackPanel
+                                Grid.Row="1"
+                                HorizontalAlignment="Center"
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    FontSize="32"
+                                    FontWeight="Bold"
+                                    Foreground="{Binding Ch4.StatusColor, FallbackValue=Gray}"
+                                    Text="{Binding Ch4.ActualPower, FallbackValue='0.000', StringFormat={}{0:F4}}" />
+                                <TextBlock
+                                    Margin="2,0,0,6"
+                                    VerticalAlignment="Bottom"
+                                    FontSize="12"
+                                    Foreground="#999"
+                                    Text="mW" />
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </UniformGrid>
+
+
+                <DockPanel HorizontalAlignment="Center">
+
+                    <Button
+                        Width="90"
+                        Height="35"
+                        Margin="5"
+                        Background="DarkGreen"
+                        Command="{Binding TurnOnAllChannelsCommand}"
+                        Content="开启输出"
+                        Foreground="White"
+                        Style="{StaticResource WinFormsButtonStyle}" />
+
+                    <Button
+                        Width="90"
+                        Height="35"
+                        Margin="5"
+                        Background="DarkRed"
+                        Command="{Binding TurnOffAllChannelsCommand}"
+                        Content="切断输出"
+                        Foreground="White" 
+                        Style="{StaticResource WinFormsButtonStyle}" />
+
+                </DockPanel>
+
+            </StackPanel>
+        </Border>
+
+    </ScrollViewer>
+</UserControl>
