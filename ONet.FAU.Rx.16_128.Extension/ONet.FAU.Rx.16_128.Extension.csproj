@@ -98,10 +98,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\CouplingController.cs" />
     <Compile Include="Common\GolightOSMWD41310Helper.cs" />
     <Compile Include="Common\LD9208Controller.cs" />
     <Compile Include="Common\MaynuoM8811Helper.cs" />
     <Compile Include="Common\RuntimeContext.cs" />
+    <Compile Include="Converters\ChannelGroup.cs" />
+    <Compile Include="Converters\EnumToBooleanConverter.cs" />
+    <Compile Include="Model\ChannelData.cs" />
     <Compile Include="Model\CouplingData.cs" />
     <Compile Include="Model\LaserChannelModel.cs" />
     <Compile Include="Model\Parameter1D.cs" />

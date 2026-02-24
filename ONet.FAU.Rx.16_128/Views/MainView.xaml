@@ -432,8 +432,8 @@
                                         <ContentControl
                                             x:Name="LightModuleView"
                                             Height="Auto"
-                                            prism:RegionManager.RegionName="Region_LightModule800GView"
-                                            IsEnabled="{Binding IsLicenseValid}" />
+                                            prism:RegionManager.RegionName="OpticalModuleView"
+                                          />
 
                                     </LayoutAnchorable>
 

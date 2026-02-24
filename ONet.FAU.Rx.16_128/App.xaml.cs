@@ -125,19 +125,19 @@ namespace ONet.FAU.Rx._16_128
 
             containerRegistry.RegisterInstance<IMotionSystemService>(motionSystemService);//轴实例注入
 
-            var maynuoM8811 = new Extension.Common.MaynuoM8811Helper(logger);
-            containerRegistry.RegisterInstance<Extension.Common.MaynuoM8811Helper>(maynuoM8811);//源表实例注入
+          
 
+            containerRegistry.RegisterInstance<Extension.Common.MaynuoM8811Helper>(new Extension.Common.MaynuoM8811Helper(logger));//源表实例注入
 
             containerRegistry.RegisterInstance<Extension.Common.LD9208Controller>(new LD9208Controller(), "OpticalPowerMeterA");//光功率计注入
+
             containerRegistry.RegisterInstance<Extension.Common.LD9208Controller>(new LD9208Controller(), "OpticalPowerMeterB");//光功率计注入
 
-
             containerRegistry.RegisterInstance<Extension.Common.GolightOSMWD41310Helper>(new GolightOSMWD41310Helper(logger), "LaserLightSourceA");//光源注入
+
             containerRegistry.RegisterInstance<Extension.Common.GolightOSMWD41310Helper>(new GolightOSMWD41310Helper(logger), "LaserLightSourceB");//光源注入
 
-
-
+            containerRegistry.RegisterInstance<Extension.Common.OpticalModuleService>(new OpticalModuleService(eventAggregator));//光模块注入
 
 
             containerRegistry.RegisterSingleton<CalibrationServices>();//标定转换服务注入
@@ -157,10 +157,7 @@ namespace ONet.FAU.Rx._16_128
             var visionProcess = new VisionProcess(logger, eventAggregator, globalConfigService.GetConfigPath("VisionMaster"), "VisionSolution.sol", dataBindingContext, calib);
             containerRegistry.RegisterInstance<IVisionProcess>(visionProcess);//注册图像处理实例
 
-
             var runtimeContext = containerRegistry.GetContainer().Resolve<IRuntimeContext>();
-
-
 
             var ad8622 = containerRegistry.GetContainer().Resolve<AD8622Helper>();
 

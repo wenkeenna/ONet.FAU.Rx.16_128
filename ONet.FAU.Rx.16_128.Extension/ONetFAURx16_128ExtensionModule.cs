@@ -24,6 +24,9 @@ namespace ONet.FAU.Rx._16_128.Extension
             regionManager.RegisterViewWithRegion("Region_LD9204S_B_View", typeof(LD9204S_B_View));
             regionManager.RegisterViewWithRegion("Region_GolightOSMWD41310View", typeof(GolightOSMWD41310View));
             regionManager.RegisterViewWithRegion("Region_GolightOSMWD41310View_B", typeof(GolightOSMWD41310_B_View));
+
+
+            regionManager.RegisterViewWithRegion("OpticalModuleView", typeof(OpticalModuleView));
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
