@@ -258,8 +258,6 @@ namespace ONet.FAU.Rx._16_128.Initialization
                     return true;
                 }
 
-
-
                 VmModule = procedure;
                 if (!(bool)VmSolution.Instance.IsReady)
                 {

@@ -115,7 +115,7 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
 
                 if (!_golightOSMWD41310Helper.Open(portNum))
                 {
-                    _eventAggregator.GetEvent<Event_Message>().Publish("激光光源：打开串口失败。");
+                    _eventAggregator.GetEvent<Event_Message>().Publish("激光光源B：打开串口失败。");
 
                     return;
                 }

@@ -1,0 +1,10 @@
+{
+  "TaskFlow": "D:\\MyApp\\Solutions",
+  "NLogLogger": "D:\\MyApp\\\\Config\\NLog\\NLogConfig.config",
+  "DevicePara": "D:\\MyApp\\Config\\DeviceParameter\\DeviceParameter.json",
+  "LicensePath": "D:\\MyApp\\Config\\License",
+  "ToolBaseDll": "DM.ToolBase.dll",
+  "ToolBaseDllEx": "ONet.FAU.Rx.16_128.Extension.dll",
+  "ControlCard": "D:\\MyApp\\Config",
+  "VisionMaster": "D:\\MyApp\\VisionMaster"
+}

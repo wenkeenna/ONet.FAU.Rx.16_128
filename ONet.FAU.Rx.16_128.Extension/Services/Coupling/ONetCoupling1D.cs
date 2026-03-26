@@ -1,6 +1,7 @@
 ﻿using DM.Foundation.DataBinding.Interfaces;
 using DM.Foundation.Logging.Interfaces;
 using DM.Foundation.Motion.Interfaces;
+using DM.Foundation.Shared.Attributes;
 using DM.Foundation.Shared.Events;
 using DM.Foundation.Shared.Interfaces;
 using DM.Foundation.Shared.Models;
@@ -18,6 +19,7 @@ using System.Threading.Tasks;
 
 namespace ONet.FAU.Rx._16_128.Extension.Services.Coupling
 {
+    [ToolVersion("1.0")]
     public class ONetCoupling1D : BindableBase, IToolBase, IToolMigratable
     {
         private ToolParameter _parameter;

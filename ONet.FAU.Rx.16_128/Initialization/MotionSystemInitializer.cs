@@ -62,7 +62,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
             var axisPara_Cam = new AxisPara
             {
                 CardIndex = 1,
-                AxisIndex = 2,
+                AxisIndex = 3,
                 AxisName = MotionAxisNames.Cam,
                 MicroStep = 50,
                 LeadScrew = 1,
@@ -92,7 +92,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
             var axisPara_Glue = new AxisPara
             {
                 CardIndex = 1,
-                AxisIndex = 3,
+                AxisIndex = 2,
                 AxisName = MotionAxisNames.Glue,
                 MicroStep = 50,
                 LeadScrew = 2,

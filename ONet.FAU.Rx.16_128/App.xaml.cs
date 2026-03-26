@@ -58,7 +58,7 @@ namespace ONet.FAU.Rx._16_128
             globalConfigService.SetConfigPath("LicensePath", $"{basePath}\\Config\\License");//软件授权文件路径
 
             globalConfigService.SetConfigPath("ToolBaseDll", "DM.ToolBase.dll");
-            globalConfigService.SetConfigPath("ToolBaseDllEx", "ONet.FAU.Rx.16_128.Extension.dll");//
+            globalConfigService.SetConfigPath("ToolBaseDllEx", "ONet.FAU.Rx._16_128.Extension.dll");//
 
             globalConfigService.SetConfigPath("ControlCard", $"{basePath}\\Config");//控制卡配置文件
             globalConfigService.SetConfigPath("VisionMaster", $"{basePath}\\VisionMaster");//海康图像处理解决方案
@@ -127,7 +127,7 @@ namespace ONet.FAU.Rx._16_128
 
           
 
-            containerRegistry.RegisterInstance<Extension.Common.MaynuoM8811Helper>(new Extension.Common.MaynuoM8811Helper(logger));//源表实例注入
+            containerRegistry.RegisterInstance<Extension.Common.MaynuoM8811Helper>(new Extension.Common.MaynuoM8811Helper(logger), "MaynuoM8811HelperA");//源表实例注入
 
             containerRegistry.RegisterInstance<Extension.Common.LD9208Controller>(new LD9208Controller(), "OpticalPowerMeterA");//光功率计注入
 
@@ -137,7 +137,7 @@ namespace ONet.FAU.Rx._16_128
 
             containerRegistry.RegisterInstance<Extension.Common.GolightOSMWD41310Helper>(new GolightOSMWD41310Helper(logger), "LaserLightSourceB");//光源注入
 
-            containerRegistry.RegisterInstance<Extension.Common.OpticalModuleService>(new OpticalModuleService(eventAggregator));//光模块注入
+            containerRegistry.RegisterInstance<Extension.Common.OpticalModuleService>(new OpticalModuleService(eventAggregator,logger));//光模块注入
 
 
             containerRegistry.RegisterSingleton<CalibrationServices>();//标定转换服务注入
@@ -168,7 +168,7 @@ namespace ONet.FAU.Rx._16_128
             var dc65 = containerRegistry.GetContainer().Resolve<DC65LightSourceHelper>();
 
 
-            var m8811 = containerRegistry.GetContainer().Resolve<Extension.Common.MaynuoM8811Helper>();
+            var m8811 = containerRegistry.GetContainer().Resolve<Extension.Common.MaynuoM8811Helper>("MaynuoM8811HelperA");
 
             ToolExecutionContext toolExecutionContext = new ToolExecutionContext();
             toolExecutionContext.Set("DataBindingContext", dataBindingContext); //将数据绑定容器添加到工具执行上下文
@@ -207,14 +207,9 @@ namespace ONet.FAU.Rx._16_128
 
             moduleCatalog.AddModule<DM.AnalogCamLib.AnalogCam_Module>();//模拟信号相机模块
 
-         
-
-
             moduleCatalog.AddModule<DM.UserManagement.UserManagement_Module>();
 
-
             moduleCatalog.AddModule<DM.LoginModule.Login_Module>();
-
 
             moduleCatalog.AddModule<DM.ManualMotionControl.ManualMotion_Module>();//手动轴控制模块
 
@@ -222,10 +217,7 @@ namespace ONet.FAU.Rx._16_128
 
             moduleCatalog.AddModule<DM.TrayMap.TrayModule>();//上料托盘模块
 
-
             moduleCatalog.AddModule<ONet.FAU.Rx._16_128.Extension.ONetFAURx16_128ExtensionModule>();//客户定制模块
-
-
         }
 
 

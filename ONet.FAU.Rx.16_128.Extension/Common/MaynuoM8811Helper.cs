@@ -34,15 +34,24 @@ namespace ONet.FAU.Rx._16_128.Extension.Common
 
                 _serialPort = new SerialPort(portName, baudRate)
                 {
-                    Parity = Parity.None,
                     DataBits = 8,
                     StopBits = StopBits.One,
-                    Handshake = Handshake.None,
+                    Parity = Parity.None,
+                    Handshake = Handshake.XOnXOff,
+
+                 
+
+                    RtsEnable=true,
+                    DtrEnable=false,
+                   
+
                     ReadTimeout = 1500,
                     WriteTimeout = 1500,
-                    Encoding = Encoding.ASCII
+
                 };
 
+
+            
                 _serialPort.Open();
                 _serialPort.DiscardInBuffer();
                 _serialPort.DiscardOutBuffer();
@@ -176,6 +185,8 @@ namespace ONet.FAU.Rx._16_128.Extension.Common
                 string currResponse = await Query("MEAS:CURR?", 800);
 
                 double v = 0, c = 0;
+
+                _logger?.Debug($"M8811:Volt:{voltResponse},Curr:{currResponse}");  
 
                 if (!string.IsNullOrEmpty(voltResponse) &&
                     double.TryParse(voltResponse, NumberStyles.Any, CultureInfo.InvariantCulture, out v))

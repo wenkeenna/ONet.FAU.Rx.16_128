@@ -53,7 +53,7 @@ namespace ONet.FAU.Rx._16_128.Extension.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ONet.FAU.Rx.16_128.Extension;component/views/golightosmwd41310view.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ONet.FAU.Rx._16_128.Extension;component/views/golightosmwd41310view.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\GolightOSMWD41310View.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

@@ -7,7 +7,7 @@
     <ProjectGuid>{0EC2E7E0-CCFC-4178-B1F2-B421D447A865}</ProjectGuid>
     <OutputType>library</OutputType>
     <RootNamespace>ONet.FAU.Rx._16_128.Extension</RootNamespace>
-    <AssemblyName>ONet.FAU.Rx.16_128.Extension</AssemblyName>
+    <AssemblyName>ONet.FAU.Rx._16_128.Extension</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -102,6 +102,7 @@
     <Compile Include="Common\GolightOSMWD41310Helper.cs" />
     <Compile Include="Common\LD9208Controller.cs" />
     <Compile Include="Common\MaynuoM8811Helper.cs" />
+    <Compile Include="Common\OpticalModuleService.cs" />
     <Compile Include="Common\RuntimeContext.cs" />
     <Compile Include="Converters\ChannelGroup.cs" />
     <Compile Include="Converters\EnumToBooleanConverter.cs" />

@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using ONet.FAU.Rx._16_128.Extension.Common;
 using Prism.Commands;
 using Prism.Events;
+using Prism.Ioc;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -37,7 +38,7 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
         private ILogger _logger;
 
         private CancellationTokenSource _loopCts;
-        public MaynuoM8811ViewModel(IEventAggregator eventAggregator,MaynuoM8811Helper maynuoM8811, IDataBindingContext dataBinding,ILogger logger)
+        public MaynuoM8811ViewModel(IEventAggregator eventAggregator, IContainerProvider containerProvider, IDataBindingContext dataBinding,ILogger logger)
         {
             // 初始化命令
             SwitchToCVCmd = new DelegateCommand(ExecuteSwitchToCV);
@@ -47,13 +48,14 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
 
 
             _eventAggregator= eventAggregator;
-            _maynuoM8811= maynuoM8811;
+           // _maynuoM8811= maynuoM8811;
             _dataBinding= dataBinding;
             _logger = logger;
 
-
+            _maynuoM8811 = containerProvider.Resolve<MaynuoM8811Helper>("MaynuoM8811HelperA");
 
             _eventAggregator.GetEvent<AppStartUpEvent>().Subscribe(OnAppStartUpEvent);
+
 
             // 模拟实时数据刷新 (实际开发中由硬件监听器触发)
           //  StartSimulation();
@@ -147,6 +149,17 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
         public DelegateCommand OutputOnCmd { get; }
         public DelegateCommand OutputOffCmd { get; }
 
+
+        private const string CMD_OutPut_ON = "M8811:ON";
+        private const string CMD_OutPut_OFF = "M8811:OFF";
+
+        private const string CMD_NAME = "M8811";
+        private const string CMD_STATE_ON = "ON";
+        private const string CMD_STATE_OFF = "OFF";
+        private const string CMD_PRODUCT_TYPE = "1_6T";
+
+
+
         private void ExecuteSwitchToCV()
         {
             //try
@@ -174,6 +187,8 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
 
                 await Task.Delay(500);
 
+                _eventAggregator.GetEvent<InstrmentKitCommandEvent>().Publish($"{CMD_NAME}:{CMD_PRODUCT_TYPE}:{CMD_STATE_ON }");
+
                 StartPolling();
             }
             catch (Exception ex)
@@ -187,26 +202,7 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
 
         private async void ExecuteOutputOff()
         {
-            //try
-            //{
-            //    // 这里调用硬件通讯接口：SMUService.SetOutput(false)
-            //    IsOutputOn = false;
-            //    MeasuredVoltage = 0;
-            //    MeasuredCurrent = 0;
-
-            //    _loopCts.Cancel();
-            //    await Task.Delay(500);
-
-            //    await _maynuoM8811.SetOutputStateAsync(false);
-
-            //    _eventAggregator.GetEvent<Event_Message>().Publish($"M8811源表:关闭输出");
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    _eventAggregator.GetEvent<Event_Message>().Publish($"M8811源表:{ex.Message}");
-            //}
-
+           
             try
             {
                 IsOutputOn = false;
@@ -220,6 +216,9 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
 
                 await _maynuoM8811.SetOutputStateAsync(false);
                 _eventAggregator.GetEvent<Event_Message>().Publish("M8811源表:关闭输出");
+
+                //_eventAggregator.GetEvent<InstrmentKitCommandEvent>().Publish(CMD_OutPut_OFF);
+                _eventAggregator.GetEvent<InstrmentKitCommandEvent>().Publish($"{CMD_NAME}:{CMD_PRODUCT_TYPE}:{CMD_STATE_OFF}");
             }
             catch (Exception ex)
             {
@@ -246,29 +245,7 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
                     _eventAggregator.GetEvent<Event_Message>().Publish($"M8811源表:启动实时采集...");
 
                     IsOutputOn = true;
-                    //while (!_loopCts.IsCancellationRequested)
-                    //{
-                    //    try
-                    //    {
-                    //        if (_maynuoM8811.IsOpen)
-                    //        {
-                    //            // 调用之前优化过的元组方法
-                    //            var data = await _maynuoM8811.GetMeasureDataAsync();
-
-                    //            // 回到 UI 线程更新属性 (Prism 的 SetProperty 会自动处理，但如果是复杂逻辑建议加 Dispatcher)
-                    //            MeasuredVoltage = data.Voltage;
-                    //            MeasuredCurrent = data.Current;
-                    //        }
-                    //    }
-                    //    catch (Exception ex)
-                    //    {
-
-                    //        _logger.Error($"M8811采集错误:{ex.ToString()}");
-                    //    }
-
-                    //    // 设置读取间隔，例如 500ms 读取一次
-                    //    await Task.Delay(500, _loopCts.Token);
-                    //}
+                
 
 
                     while (!_loopCts.IsCancellationRequested)
@@ -278,6 +255,9 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
                             if (_maynuoM8811.IsOpen)
                             {
                                 var data = await _maynuoM8811.GetMeasureDataAsync();
+
+
+                                //_logger?.Debug($"Result:Vlot:{data.Voltage},Curr:{data.Current}");
 
                                 // 用 Dispatcher 更新 UI
                                 if (Application.Current?.Dispatcher != null)

@@ -232,7 +232,17 @@ namespace ONet.FAU.Rx._16_128.Initialization
                         }
                     },
 
+                    new ParameterModel
+                    {
+                        Name = "配置",
+                        IsRoot = true,
+                        IsAddDataBind=true,
+                        Children = new ObservableCollection<ParameterModel>
+                        {
+                             ParameterModel.Create("配置","产品型号","800G", ParameterType.String),
 
+                        }
+                    },
 
 
 

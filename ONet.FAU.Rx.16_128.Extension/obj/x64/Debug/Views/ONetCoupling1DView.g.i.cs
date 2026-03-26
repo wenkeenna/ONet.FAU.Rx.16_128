@@ -68,7 +68,7 @@ namespace ONet.FAU.Rx._16_128.Extension.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/ONet.FAU.Rx.16_128.Extension;component/views/onetcoupling1dview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/ONet.FAU.Rx._16_128.Extension;component/views/onetcoupling1dview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\ONetCoupling1DView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

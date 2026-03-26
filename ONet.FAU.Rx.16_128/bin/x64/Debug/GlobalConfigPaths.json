@@ -4,7 +4,7 @@
   "DevicePara": "D:\\MyApp\\Config\\DeviceParameter\\DeviceParameter.json",
   "LicensePath": "D:\\MyApp\\Config\\License",
   "ToolBaseDll": "DM.ToolBase.dll",
-  "ToolBaseDllEx": "ONet.FAU.Rx.16_128.Extension.dll",
+  "ToolBaseDllEx": "ONet.FAU.Rx._16_128.Extension.dll",
   "ControlCard": "D:\\MyApp\\Config",
   "VisionMaster": "D:\\MyApp\\VisionMaster"
 }

@@ -9,7 +9,7 @@
     xmlns:viewmodels="clr-namespace:ONet.FAU.Rx._16_128.Extension.ViewModels"
     d:DataContext="{d:DesignInstance Type=viewmodels:OpticalModuleViewModel}"
     d:DesignHeight="400"
-    d:DesignWidth="1200"
+    d:DesignWidth="600"
     mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -132,11 +132,11 @@
 
 
                 <Grid>
-                    <Grid.ColumnDefinitions>
+                    <!--<Grid.ColumnDefinitions>
                         <ColumnDefinition />
                         <ColumnDefinition />
                         <ColumnDefinition />
-                    </Grid.ColumnDefinitions>
+                    </Grid.ColumnDefinitions>-->
 
                     <GroupBox
                         Grid.Column="0"
@@ -450,13 +450,13 @@
                         </UniformGrid>
                     </GroupBox>
 
-                    <GroupBox
+                    <!--<GroupBox
                         Grid.Column="1"
                         BorderBrush="{StaticResource Color.Accent.Green}"
                         BorderThickness="2"
                         Header="MPDi">
                         <UniformGrid Columns="2" Rows="4">
-                            <!--  CH1  -->
+                            --><!--  CH1  --><!--
                             <Border
                                 Margin="2"
                                 Padding="6"
@@ -493,7 +493,7 @@
                                     </StackPanel>
                                 </Grid>
                             </Border>
-                            <!--  CH5  -->
+                            --><!--  CH5  --><!--
                             <Border
                                 Margin="2"
                                 Padding="6"
@@ -530,7 +530,7 @@
                                     </StackPanel>
                                 </Grid>
                             </Border>
-                            <!--  CH2  -->
+                            --><!--  CH2  --><!--
                             <Border
                                 Grid.Row="1"
                                 Margin="2"
@@ -568,7 +568,7 @@
                                     </StackPanel>
                                 </Grid>
                             </Border>
-                            <!--  CH6  -->
+                            --><!--  CH6  --><!--
                             <Border
                                 Grid.Row="1"
                                 Margin="2"
@@ -608,7 +608,7 @@
                             </Border>
 
 
-                            <!--  CH3  -->
+                            --><!--  CH3  --><!--
                             <Border
                                 Margin="2"
                                 Padding="6"
@@ -645,7 +645,7 @@
                                     </StackPanel>
                                 </Grid>
                             </Border>
-                            <!--  CH7  -->
+                            --><!--  CH7  --><!--
                             <Border
                                 Margin="2"
                                 Padding="6"
@@ -682,7 +682,7 @@
                                     </StackPanel>
                                 </Grid>
                             </Border>
-                            <!--  CH4  -->
+                            --><!--  CH4  --><!--
                             <Border
                                 Grid.Row="1"
                                 Margin="2"
@@ -720,7 +720,7 @@
                                     </StackPanel>
                                 </Grid>
                             </Border>
-                            <!--  CH8  -->
+                            --><!--  CH8  --><!--
                             <Border
                                 Grid.Row="1"
                                 Margin="2"
@@ -768,7 +768,7 @@
                         BorderThickness="2"
                         Header="MPDo">
                         <UniformGrid Columns="2" Rows="4">
-                            <!--  CH1  -->
+                            --><!--  CH1  --><!--
                             <Border
                                 Margin="2"
                                 Padding="6"
@@ -805,7 +805,7 @@
                                     </StackPanel>
                                 </Grid>
                             </Border>
-                            <!--  CH5  -->
+                            --><!--  CH5  --><!--
                             <Border
                                 Margin="2"
                                 Padding="6"
@@ -842,7 +842,7 @@
                                     </StackPanel>
                                 </Grid>
                             </Border>
-                            <!--  CH2  -->
+                            --><!--  CH2  --><!--
                             <Border
                                 Grid.Row="1"
                                 Margin="2"
@@ -880,7 +880,7 @@
                                     </StackPanel>
                                 </Grid>
                             </Border>
-                            <!--  CH6  -->
+                            --><!--  CH6  --><!--
                             <Border
                                 Grid.Row="1"
                                 Margin="2"
@@ -920,7 +920,7 @@
                             </Border>
 
 
-                            <!--  CH3  -->
+                            --><!--  CH3  --><!--
                             <Border
                                 Margin="2"
                                 Padding="6"
@@ -957,7 +957,7 @@
                                     </StackPanel>
                                 </Grid>
                             </Border>
-                            <!--  CH7  -->
+                            --><!--  CH7  --><!--
                             <Border
                                 Margin="2"
                                 Padding="6"
@@ -994,7 +994,7 @@
                                     </StackPanel>
                                 </Grid>
                             </Border>
-                            <!--  CH4  -->
+                            --><!--  CH4  --><!--
                             <Border
                                 Grid.Row="1"
                                 Margin="2"
@@ -1032,7 +1032,7 @@
                                     </StackPanel>
                                 </Grid>
                             </Border>
-                            <!--  CH8  -->
+                            --><!--  CH8  --><!--
                             <Border
                                 Grid.Row="1"
                                 Margin="2"
@@ -1072,7 +1072,7 @@
                             </Border>
 
                         </UniformGrid>
-                    </GroupBox>
+                    </GroupBox>-->
 
 
 

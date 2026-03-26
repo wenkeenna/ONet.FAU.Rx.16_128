@@ -44,11 +44,12 @@ namespace ONet.FAU.Rx._16_128.Extension.Common
             }
             catch (Exception ex)
             {
-                _logger.Error(ex.Message);
+                _logger.Error($"GolightOSMWD41310Helper:{ex.Message}");
                 return false;
               
             }
-           
+
+
         }
 
         /// <summary>
