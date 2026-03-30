@@ -1,6 +1,7 @@
 ﻿using DM.Foundation.DataBinding.Interfaces;
 using DM.Foundation.Logging.Interfaces;
 using DM.Foundation.Shared.Events;
+using ImTools;
 using ONet.FAU.Rx._16_128.Extension.Common;
 using ONet.FAU.Rx._16_128.Extension.Model;
 using Prism.Commands;
@@ -55,7 +56,8 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
 
         private IEventAggregator _eventAggregator;
         private IDataBindingContext _dataBinding;
-        private LD9208Controller _ld9208Controller;
+        private LD9208Controller _ld9208Controller_A;
+        private LD9208Controller _ld9208Controller_B;
         private readonly IContainerProvider _containerProvider;
         private CancellationTokenSource _loopCts;
         private ILogger _logger;
@@ -69,6 +71,11 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
                 new PowerMeterChannelModel { ChannelName = "CH1", Wavelength = "1550" },
                 new PowerMeterChannelModel { ChannelName = "CH2", Wavelength = "1550" },
                 new PowerMeterChannelModel { ChannelName = "CH3", Wavelength = "1550" },
+                new PowerMeterChannelModel { ChannelName = "CH4", Wavelength = "1550" },
+
+                new PowerMeterChannelModel { ChannelName = "CH4", Wavelength = "1550" },
+                new PowerMeterChannelModel { ChannelName = "CH4", Wavelength = "1550" },
+                new PowerMeterChannelModel { ChannelName = "CH4", Wavelength = "1550" },
                 new PowerMeterChannelModel { ChannelName = "CH4", Wavelength = "1550" }
             };
 
@@ -85,7 +92,8 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
             _eventAggregator = eventAggregator;
           
 
-            _ld9208Controller = _containerProvider.Resolve<LD9208Controller>("OpticalPowerMeterA");
+            _ld9208Controller_A = _containerProvider.Resolve<LD9208Controller>("OpticalPowerMeterA");
+            _ld9208Controller_B = _containerProvider.Resolve<LD9208Controller>("OpticalPowerMeterB");
 
             _dataBinding = dataBinding;
             _logger= logger;
@@ -100,22 +108,35 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
         {
             try
             {
-                var portNum = _dataBinding.Get("仪表端口号", "光功率计_A").Value;
+                var portNumA = _dataBinding.Get("仪表端口号", "光功率计_A").Value;
+                var portNumB = _dataBinding.Get("仪表端口号", "光功率计_B").Value;
 
-                if (!_ld9208Controller.Open(portNum))
+                if (!_ld9208Controller_A.Open(portNumA))
                 {
-                    _eventAggregator.GetEvent<Event_Message>().Publish("光功率计：打开串口失败。");
+                    _eventAggregator.GetEvent<Event_Message>().Publish("光功率计A：打开串口失败。");
 
                     return;
                 }
-                var strin = _ld9208Controller.GetWavelength(1);
 
-                Channels[0].Wavelength=  _ld9208Controller.GetWavelength(1);
-                Channels[1].Wavelength = _ld9208Controller.GetWavelength(2);
-                Channels[2].Wavelength = _ld9208Controller.GetWavelength(3);
-                Channels[3].Wavelength = _ld9208Controller.GetWavelength(4);
+                if (!_ld9208Controller_B.Open(portNumB))
+                {
+                    _eventAggregator.GetEvent<Event_Message>().Publish("光功率计B：打开串口失败。");
+
+                    return;
+                }
 
 
+               
+
+                Channels[0].Wavelength = _ld9208Controller_A.GetWavelength(1);
+                Channels[1].Wavelength = _ld9208Controller_A.GetWavelength(2);
+                Channels[2].Wavelength = _ld9208Controller_A.GetWavelength(3);
+                Channels[3].Wavelength = _ld9208Controller_A.GetWavelength(4);
+
+                Channels[4].Wavelength = _ld9208Controller_B.GetWavelength(1);
+                Channels[5].Wavelength = _ld9208Controller_B.GetWavelength(2);
+                Channels[6].Wavelength = _ld9208Controller_B.GetWavelength(3);
+                Channels[7].Wavelength = _ld9208Controller_B.GetWavelength(4);
 
 
 
@@ -154,24 +175,26 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
 
                 _eventAggregator.GetEvent<Event_Message>().Publish($"光功率计:启动实时采集...");
 
-              
                 while (!token.IsCancellationRequested)
                 {
                     try
                     {
-                        if (_ld9208Controller.IsOpen)
+                        if (_ld9208Controller_A.IsOpen)
                         {
                             // 调用之前优化过的元组方法
-                            var data =  _ld9208Controller.GetAllPower().Split(',');
-
+                            var data = _ld9208Controller_A.GetAllPower().Split(',');
+                            var dataB = _ld9208Controller_B.GetAllPower().Split(',');
+                            data.Append(dataB);
+                           
                             for(int i = 0; i < data.Length; i++)
                             {
                                 Channels[i].RawPowerValue =Convert.ToDouble( data[i]);
                             }
 
-                            // 回到 UI 线程更新属性 (Prism 的 SetProperty 会自动处理，但如果是复杂逻辑建议加 Dispatcher)
-                            //MeasuredVoltage = data.Voltage;
-                            //MeasuredCurrent = data.Current;
+                            for (int i = 0; i < dataB.Length; i++)
+                            {
+                                Channels[i+4].RawPowerValue = Convert.ToDouble(dataB[i]);
+                            }
                         }
                     }
                     catch (Exception ex)

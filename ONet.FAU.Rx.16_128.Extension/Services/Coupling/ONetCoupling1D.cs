@@ -7,8 +7,11 @@ using DM.Foundation.Shared.Interfaces;
 using DM.Foundation.Shared.Models;
 using DryIoc;
 using Newtonsoft.Json.Linq;
+using ONet.FAU.Rx._16_128.Extension.Common;
+using ONet.FAU.Rx._16_128.Extension.Converters;
 using ONet.FAU.Rx._16_128.Extension.Model;
 using Prism.Events;
+using Prism.Ioc;
 using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
@@ -41,7 +44,43 @@ namespace ONet.FAU.Rx._16_128.Extension.Services.Coupling
             set { _rightpara = value; RaisePropertyChanged(); }
         }
 
+        private const string LD9204S_B = "LD9204S_B";
+        private const string LD9204S_A = "LD9204S_A";
 
+        private const string STATE_ON = "ON";
+        private const string STATE_OFF = "OFF";
+
+        private  IContainerProvider _containerProvider;
+        private  LD9208Controller _ld9208A;
+        private  LD9208Controller _ld9208B;
+        private  LD9208Controller _ld9208C;
+        private  LD9208Controller _ld9208D;
+
+        private OpticalModuleService _opticalModuleService;
+
+        private int _axisvelocity;
+        public int AxisVel
+        {
+            get { return _axisvelocity; }
+            set
+            {
+                if (value > 5)
+                {
+                    _axisvelocity = 5;
+                }
+                else
+                {
+                    _axisvelocity = value;
+                }
+
+                RaisePropertyChanged();
+            }
+        }
+
+
+
+        private int _datadealy;
+        public int DataDelay { get { return _datadealy; } set { _datadealy = value; RaisePropertyChanged(); } }
         public ONetCoupling1D()
         {
             Parameter = new ToolParameter()
@@ -67,26 +106,79 @@ namespace ONet.FAU.Rx._16_128.Extension.Services.Coupling
                 var runtiem = context.Get<IRuntimeContext>("IRuntimeContext");//软件运行过程中更新全局数据
                 var logger = context.Get<ILogger>("ILogger");
 
-             
+                _containerProvider = context.ContainerProvider;
+                _ld9208A = _containerProvider.Resolve<LD9208Controller>("OpticalPowerMeterA");
+                _ld9208B = _containerProvider.Resolve<LD9208Controller>("OpticalPowerMeterB");
+                _ld9208C = _containerProvider.Resolve<LD9208Controller>("OpticalPowerMeterC");
+                _ld9208D = _containerProvider.Resolve<LD9208Controller>("OpticalPowerMeterD");
+
+                _opticalModuleService = _containerProvider.Resolve<OpticalModuleService>();
 
 
-                eventAggregator.GetEvent<Event_Message>().Publish("等待耦合完成");
-                await Task.Delay(100);
-                eventAggregator.GetEvent<InstrmentKitCommandEvent>().Publish("LightModule800G:ON");
-                eventAggregator.GetEvent<Event_Message>().Publish("打开光模块采集");
-              
+                eventAggregator.GetEvent<InstrmentKitCommandEvent>().Publish($"{LD9204S_B}:{STATE_OFF}");
+
+                await Task.Delay(1000);
+
+                List<Task<Result1D>> tasks = new List<Task<Result1D>>();
+
+                CouplingController controller = new CouplingController();
+
+                LeftPara.AxisVel = AxisVel;
+                LeftPara.DataDelay = DataDelay;
+
+
+                RightPara.AxisVel = AxisVel;
+                RightPara.DataDelay = DataDelay;
+
+                if (LeftPara.SelectedGroup == ChannelGroup.None || RightPara.SelectedGroup == ChannelGroup.None) return false;
+                int startChA = (int)LeftPara.SelectedGroup;
+                int startChB = (int)RightPara.SelectedGroup;
+
+                await _opticalModuleService.SetLaserStateAsync(startChA,startChB);
+
+                if (LeftPara.Enable)
+                {
+                    var motion = motionsystem.GetAxis(LeftPara.AxisName);
+
+                    //if (LeftPara.SelectedGroup == ChannelGroup.None) return false;
+                    //int startCh = (int)LeftPara.SelectedGroup;
+                    //await _opticalModuleService.SetLaserStateAsync(startCh);
+
+                    tasks.Add(controller.Run1DFullRangeAsync(motion,LeftPara,token,eventAggregator,Parameter,logger, _ld9208A, _ld9208B,0));
+                }
+
+                if (RightPara.Enable)
+                {
+                    var motion = motionsystem.GetAxis(RightPara.AxisName);
+
+                    //if (RightPara.SelectedGroup == ChannelGroup.None) return false;
+                    //int startCh = (int)RightPara.SelectedGroup;
+                    //await _opticalModuleService.SetLaserStateAsync(startCh);
+
+                    tasks.Add(controller.Run1DFullRangeAsync(motion, RightPara, token, eventAggregator, Parameter, logger, _ld9208C, _ld9208D, 1));
+                }
                 await Task.Delay(500);
+
+                Result1D[] allTasks = await Task.WhenAll(tasks.ToArray());
+
+                eventAggregator.GetEvent<InstrmentKitCommandEvent>().Publish($"{LD9204S_B}:{STATE_ON}");
+
+                foreach (var task in allTasks)
+                {
+                    if (!task.Success)
+                    {
+                        return false;
+                    }
+                }
+
                 return true;
             }
             catch (Exception ex)
             {
                 eventAggregator.GetEvent<Event_Message>().Publish(ex.ToString());
+                eventAggregator.GetEvent<InstrmentKitCommandEvent>().Publish($"{LD9204S_B}:{STATE_ON}");
 
                 return false;
-            }
-            finally
-            {
-                eventAggregator.GetEvent<InstrmentKitCommandEvent>().Publish("LightModule800G:ON");
             }
         }
 

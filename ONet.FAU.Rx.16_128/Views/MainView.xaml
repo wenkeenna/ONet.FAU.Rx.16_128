@@ -312,7 +312,7 @@
 
                                     </LayoutAnchorable>
 
-                                    <LayoutAnchorable
+                                    <!--<LayoutAnchorable
                                         Title="光源_A"
                                         CanAutoHide="False"
                                         CanClose="False"
@@ -341,7 +341,7 @@
                                             prism:RegionManager.RegionName="Region_GolightOSMWD41310View_B"
                                             IsEnabled="{Binding IsLicenseValid}" />
 
-                                    </LayoutAnchorable>
+                                    </LayoutAnchorable>-->
 
 
 

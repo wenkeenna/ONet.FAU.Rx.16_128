@@ -1,4 +1,5 @@
-﻿using Prism.Mvvm;
+﻿using ONet.FAU.Rx._16_128.Extension.Converters;
+using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -181,6 +182,15 @@ namespace ONet.FAU.Rx._16_128.Extension.Model
 
         private int _datadealy;
         public int DataDelay { get { return _datadealy; } set { _datadealy = value; RaisePropertyChanged(); } }
+
+
+        private ChannelGroup _selectedGroup = ChannelGroup.None;
+
+        public ChannelGroup SelectedGroup
+        {
+            get { return _selectedGroup; }
+            set { _selectedGroup = value; RaisePropertyChanged(); }
+        }
     }
 
 

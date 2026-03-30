@@ -210,12 +210,19 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
             try
             {
                 string[] CMD_Parse = obj.Split(':');
-
-                if (CMD_Parse.Length < 3)
+                if (CMD_Parse[0] == DEV_NAME)
                 {
-                    _eventAggregator.GetEvent<Event_Message>().Publish("1.6T光模块: 命令格式错误。");
+                    if (CMD_Parse.Length < 3)
+                    {
+                        _eventAggregator.GetEvent<Event_Message>().Publish("1.6T光模块: 命令格式错误。");
+                        return;
+                    }
+                }
+                else
+                {
                     return;
                 }
+              
 
                 // 处理 ON 命令
                 if (CMD_Parse[0] == DEV_NAME && CMD_Parse[1] == PRODUCT_TYPE)

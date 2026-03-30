@@ -43,7 +43,7 @@ namespace ONet.FAU.Rx._16_128.Views
                 else
                 {
                     // 设置窗口的最大高度
-                    this.MaxHeight = Screen.PrimaryScreen.WorkingArea.Height;
+                  this.MaxHeight = Screen.PrimaryScreen.WorkingArea.Height;
 
 
                     this.WindowState = WindowState.Maximized;
@@ -86,6 +86,13 @@ namespace ONet.FAU.Rx._16_128.Views
                         viewModel.StartupCommand.Execute(null);
                     }
                 }
+
+
+                // 设置窗口的最大高度
+                this.MaxHeight = Screen.PrimaryScreen.WorkingArea.Height;
+
+
+                this.WindowState = WindowState.Maximized;
 
 
                 // 读取配置中的布尔变量

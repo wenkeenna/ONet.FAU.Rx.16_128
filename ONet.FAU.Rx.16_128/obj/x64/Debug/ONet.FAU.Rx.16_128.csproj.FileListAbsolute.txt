@@ -209,6 +209,13 @@ F:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\o
 F:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.2D3489E1.Up2Date
 F:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.Rx.16_128.exe
 F:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.Rx.16_128.pdb
+E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.Rx.16_128.csproj.AssemblyReference.cache
+E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.Rx.16_128.csproj.SuggestedBindingRedirects.cache
+E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.Rx.16_128.exe.config
+E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\Views\MainView.g.cs
+E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\App.g.cs
+E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.Rx.16_128_MarkupCompile.cache
+E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.Rx.16_128_MarkupCompile.lref
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\ONet.FAU.Rx.16_128.exe.config
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\ONet.FAU.Rx.16_128.exe
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\ONet.FAU.Rx.16_128.pdb
@@ -235,6 +242,7 @@ E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\b
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\DryIoc.dll
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\Microsoft.Xaml.Behaviors.dll
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\Newtonsoft.Json.dll
+E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\ONet.FAU.Rx._16_128.Extension.dll
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\Prism.dll
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\Prism.DryIoc.Wpf.dll
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\Prism.Wpf.dll
@@ -326,6 +334,7 @@ E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\b
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\GatwWay.Interface.dll
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\GateWay.Compress.dll
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\Mono.Cecil.dll
+E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\ONet.FAU.Rx._16_128.Extension.pdb
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\DM.AnalogCamLib.pdb
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\DM.CustomControl.pdb
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\DM.DataVisualization.pdb
@@ -402,13 +411,6 @@ E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\b
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\sv\AvalonDock.resources.dll
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\zh-Hans\AvalonDock.resources.dll
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\zh-Hant\AvalonDock.resources.dll
-E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.Rx.16_128.csproj.AssemblyReference.cache
-E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.Rx.16_128.csproj.SuggestedBindingRedirects.cache
-E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.Rx.16_128.exe.config
-E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\Views\MainView.g.cs
-E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\App.g.cs
-E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.Rx.16_128_MarkupCompile.cache
-E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.Rx.16_128_MarkupCompile.lref
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\App.baml
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\Views\MainView.baml
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.Rx.16_128.g.resources
@@ -418,5 +420,3 @@ E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\o
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.2D3489E1.Up2Date
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.Rx.16_128.exe
 E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\obj\x64\Debug\ONet.FAU.Rx.16_128.pdb
-E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\ONet.FAU.Rx._16_128.Extension.dll
-E:\项目\深圳\昂纳\FAU_耦合设备\ONet.FAU.Rx.16_128\ONet.FAU.Rx.16_128\bin\x64\Debug\ONet.FAU.Rx._16_128.Extension.pdb

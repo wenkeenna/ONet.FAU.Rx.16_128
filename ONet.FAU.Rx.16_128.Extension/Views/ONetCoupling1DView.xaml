@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:VM="clr-namespace:ONet.FAU.Rx._16_128.Extension.ViewModels"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:converter="clr-namespace:ONet.FAU.Rx._16_128.Extension.Converters"
     xmlns:local="clr-namespace:ONet.FAU.Rx._16_128.Extension.Views"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:prism="http://prismlibrary.com/"
@@ -16,6 +17,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/DM.Foundation.Styles;component/Themes/Themes.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <converter:EnumToBooleanConverter x:Key="EnumConverter" />
         </ResourceDictionary>
     </UserControl.Resources>
     <prism:Dialog.WindowStyle>
@@ -390,6 +392,84 @@
                         </StackPanel>
                     </GroupBox>
 
+
+                    <GroupBox Grid.Column="2">
+                        <StackPanel>
+                            <DockPanel VerticalAlignment="Center" LastChildFill="False">
+                                <TextBlock Text="轴速度:" />
+                                <TextBlock
+                                  MinWidth="40"
+                                  DockPanel.Dock="Right"
+                                  Text="mm/s" />
+                                <TextBox
+                                  MinWidth="100"
+                                  DockPanel.Dock="Right"
+                                  Text="{Binding ToolIns.AxisVel, Mode=TwoWay}" />
+                            </DockPanel>
+
+
+                            <DockPanel VerticalAlignment="Center" LastChildFill="False">
+                                <TextBlock Text="采集延时:" />
+
+                                <TextBlock
+                                  MinWidth="40"
+                                  DockPanel.Dock="Right"
+                                  Text="ms" />
+                                <TextBox
+                                  MinWidth="100"
+                                  DockPanel.Dock="Right"
+                                  Text="{Binding ToolIns.DataDelay, Mode=TwoWay}" />
+                            </DockPanel>
+
+                            <GroupBox Header="激光器[左]">
+                                <StackPanel>
+                                    <RadioButton
+                                       Content="Laser1"
+                                       GroupName="ChannelGroupA"
+                                       IsChecked="{Binding ToolIns.LeftPara.SelectedGroup, Converter={StaticResource EnumConverter}, ConverterParameter={x:Static converter:ChannelGroup.Group1}}" />
+
+                                    <RadioButton
+                                       Content="Laser2"
+                                       GroupName="ChannelGroupA"
+                                       IsChecked="{Binding ToolIns.LeftPara.SelectedGroup, Converter={StaticResource EnumConverter}, ConverterParameter={x:Static converter:ChannelGroup.Group2}}" />
+
+                                    <RadioButton
+                                       Content="Laser3"
+                                       GroupName="ChannelGroupA"
+                                       IsChecked="{Binding ToolIns.LeftPara.SelectedGroup, Converter={StaticResource EnumConverter}, ConverterParameter={x:Static converter:ChannelGroup.Group3}}" />
+
+                                    <RadioButton
+                                       Content="Laser4"
+                                       GroupName="ChannelGroupA"
+                                       IsChecked="{Binding ToolIns.LeftPara.SelectedGroup, Converter={StaticResource EnumConverter}, ConverterParameter={x:Static converter:ChannelGroup.Group4}}" />
+                                </StackPanel>
+                            </GroupBox>
+
+                            <GroupBox Header="激光器[右]">
+                                <StackPanel>
+                                    <RadioButton
+           Content="Laser1"
+           GroupName="ChannelGroupB"
+           IsChecked="{Binding ToolIns.RightPara.SelectedGroup, Converter={StaticResource EnumConverter}, ConverterParameter={x:Static converter:ChannelGroup.Group1}}" />
+
+                                    <RadioButton
+           Content="Laser2"
+           GroupName="ChannelGroupB"
+           IsChecked="{Binding ToolIns.RightPara.SelectedGroup, Converter={StaticResource EnumConverter}, ConverterParameter={x:Static converter:ChannelGroup.Group2}}" />
+
+                                    <RadioButton
+           Content="Laser3"
+           GroupName="ChannelGroupB"
+           IsChecked="{Binding ToolIns.RightPara.SelectedGroup, Converter={StaticResource EnumConverter}, ConverterParameter={x:Static converter:ChannelGroup.Group3}}" />
+
+                                    <RadioButton
+           Content="Laser4"
+           GroupName="ChannelGroupB"
+           IsChecked="{Binding ToolIns.RightPara.SelectedGroup, Converter={StaticResource EnumConverter}, ConverterParameter={x:Static converter:ChannelGroup.Group4}}" />
+                                </StackPanel>
+                            </GroupBox>
+                        </StackPanel>
+                    </GroupBox>
                 </Grid>
             </GroupBox>
         </Grid>

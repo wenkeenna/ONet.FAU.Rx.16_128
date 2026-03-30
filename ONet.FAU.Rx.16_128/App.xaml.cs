@@ -133,6 +133,11 @@ namespace ONet.FAU.Rx._16_128
 
             containerRegistry.RegisterInstance<Extension.Common.LD9208Controller>(new LD9208Controller(), "OpticalPowerMeterB");//光功率计注入
 
+            containerRegistry.RegisterInstance<Extension.Common.LD9208Controller>(new LD9208Controller(), "OpticalPowerMeterC");//光功率计注入
+
+            containerRegistry.RegisterInstance<Extension.Common.LD9208Controller>(new LD9208Controller(), "OpticalPowerMeterD");//光功率计注入
+
+
             containerRegistry.RegisterInstance<Extension.Common.GolightOSMWD41310Helper>(new GolightOSMWD41310Helper(logger), "LaserLightSourceA");//光源注入
 
             containerRegistry.RegisterInstance<Extension.Common.GolightOSMWD41310Helper>(new GolightOSMWD41310Helper(logger), "LaserLightSourceB");//光源注入
@@ -170,7 +175,7 @@ namespace ONet.FAU.Rx._16_128
 
             var m8811 = containerRegistry.GetContainer().Resolve<Extension.Common.MaynuoM8811Helper>("MaynuoM8811HelperA");
 
-            ToolExecutionContext toolExecutionContext = new ToolExecutionContext();
+            ToolExecutionContext toolExecutionContext = new ToolExecutionContext(containerRegistry.GetContainer().Resolve<IContainerProvider>());
             toolExecutionContext.Set("DataBindingContext", dataBindingContext); //将数据绑定容器添加到工具执行上下文
             toolExecutionContext.Set("IMotionSystemService", motionSystemService);//获取控制卡相关实例，包括轴实例、输入、输出
             toolExecutionContext.Set("IVisionProcess", visionProcess);//添加图像处理实例到工具执行参数
@@ -183,6 +188,7 @@ namespace ONet.FAU.Rx._16_128
             toolExecutionContext.Set("DC65LightSourceHelper", dc65);//光源
             //toolExecutionContext.Set("LightModule800GHelper", lightmodule);//光模块
             toolExecutionContext.Set("MaynuoM8811Helper", m8811);//电源
+
 
             containerRegistry.RegisterInstance<ToolExecutionContext>(toolExecutionContext);//注册工具执行参数，包括视觉处理，仪表，轴控等实例
         }

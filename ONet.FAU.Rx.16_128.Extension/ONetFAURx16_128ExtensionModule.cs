@@ -34,6 +34,11 @@ namespace ONet.FAU.Rx._16_128.Extension
           
 
             containerRegistry.RegisterDialog<ONetCoupling1DView, ONetCoupling1DViewModel>("ONetCoupling1DView");
+
+
+            containerRegistry.RegisterDialog<ONetLensVisionCorrectionView, ONetLensVisionCorrectionViewModel>("ONetLensVisionCorrectionView");
+
+            containerRegistry.RegisterDialog<ONetPICPositionView, ONetPICPositionViewModel>("ONetPICPositionView");
         }
     }
 }

@@ -268,6 +268,90 @@ namespace ONet.FAU.Rx._16_128.Extension.Common
             }
         }
 
+        private int LASER_GROUP_1=1, LASER_GROUP_2=2, LASER_GROUP_3=3, LASER_GROUP_4=4;
+        public async Task<bool> SetLaserStateAsync(int channelA,int channelB)
+        {
+            try
+            {
+                byte groupValue;
+
+                //switch (channelA)
+                //{
+                //    case 1:
+                //        groupValue = 0x11;
+                //        break;
+                //    case 2:
+                //        groupValue = 0x22;
+                //        break;
+                //    case 3:
+                //        groupValue = 0x33;
+                //        break;
+                //    case 4:
+                //        groupValue = 0x44;
+                //        break;
+                //    case 5:
+                //        groupValue = 0x45;
+                //        break;
+                //    default:
+                //        groupValue = 0;
+                //        break;
+                //}
+
+                if (channelA == LASER_GROUP_1 && channelB == LASER_GROUP_2)
+                {
+                    groupValue = 0X12;
+                }
+                else if (channelA == LASER_GROUP_1 && channelB == LASER_GROUP_3)
+                {
+                    groupValue = 0X13;
+                }
+                else if (channelA == LASER_GROUP_1 && channelB == LASER_GROUP_4)
+                {
+                    groupValue = 0X14;
+                }
+                else if (channelA == LASER_GROUP_2 && channelB == LASER_GROUP_3)
+                {
+                    groupValue = 0X23;
+                }
+                else if (channelA == LASER_GROUP_2 && channelB == LASER_GROUP_4)
+                {
+                    groupValue = 0X24;
+                }
+                else if (channelA == LASER_GROUP_3 && channelB == LASER_GROUP_4)
+                {
+                    groupValue = 0X34;
+                }
+                else
+                {
+                    groupValue = 0;
+                }
+
+
+                if (groupValue == 0)
+                {
+                    _logger?.Error($"无效通道: {channelA}");
+                    PublishMessage($"SetLaserStateAsync 无效通道: {channelA}");
+                    return false;
+                }
+
+
+                await SwitchPageAsync(0x00);
+
+                await SendAndReceiveAsync(new byte[] { CMD_TITLE, CMD_WRITE, 0x7F, 0x01, 0x80 }, 800);
+                await Task.Delay(100);
+
+                await SendAndReceiveAsync(new byte[] { CMD_TITLE, CMD_WRITE, 0xE6, 0x01, groupValue }, 800);
+                await Task.Delay(50);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger?.Error($"SetLaserStateAsync 异常: {ex}");
+                PublishMessage($"SetLaserStateAsync {ex}");
+                return false;
+            }
+        }
         public async Task<bool> SetPawssword()
         {
             //var success = await WriteBytesAsync(0x00, 0x7A, new byte[] { 0x84, 0x85, 0x86, 0x87 });

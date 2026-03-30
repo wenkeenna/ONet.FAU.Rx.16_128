@@ -62,7 +62,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
             var axisPara_Cam = new AxisPara
             {
                 CardIndex = 1,
-                AxisIndex = 3,
+                AxisIndex = 2,
                 AxisName = MotionAxisNames.Cam,
                 MicroStep = 50,
                 LeadScrew = 1,
@@ -92,7 +92,7 @@ namespace ONet.FAU.Rx._16_128.Initialization
             var axisPara_Glue = new AxisPara
             {
                 CardIndex = 1,
-                AxisIndex = 2,
+                AxisIndex = 3,
                 AxisName = MotionAxisNames.Glue,
                 MicroStep = 50,
                 LeadScrew = 2,
@@ -639,33 +639,12 @@ namespace ONet.FAU.Rx._16_128.Initialization
                 BindingParamName = "[右轴组]复位位置:Z"
             });
 
-            system.ResetItems.Add(new HomingItem()
-            {
-                StepType = HomeStepType.AbsMove,
-                AxisName = MotionAxisNames.LeftY,
-                Priority = 30,
-                Speed = 10,
-                ResetPosition = 5,
-                Description = "LY轴复位",
-                BindingParamName = "[左轴组]复位位置:Y"
-            });
-
-            system.ResetItems.Add(new HomingItem()
-            {
-                StepType = HomeStepType.AbsMove,
-                AxisName = MotionAxisNames.RightY,
-                Priority = 30,
-                Speed = 10,
-                ResetPosition = 5,
-                Description = "RY轴复位",
-                BindingParamName = "[右轴组]复位位置:Y"
-            });
 
             system.ResetItems.Add(new HomingItem()
             {
                 StepType = HomeStepType.AbsMove,
                 AxisName = MotionAxisNames.LeftX,
-                Priority = 40,
+                Priority = 30,
                 Speed = 10,
                 ResetPosition = 5,
                 Description = "LX轴复位",
@@ -676,12 +655,37 @@ namespace ONet.FAU.Rx._16_128.Initialization
             {
                 StepType = HomeStepType.AbsMove,
                 AxisName = MotionAxisNames.RightX,
-                Priority = 40,
+                Priority = 30,
                 Speed = 10,
                 ResetPosition = 5,
                 Description = "RX轴复位",
                 BindingParamName = "[右轴组]复位位置:X"
             });
+
+
+            system.ResetItems.Add(new HomingItem()
+            {
+                StepType = HomeStepType.AbsMove,
+                AxisName = MotionAxisNames.LeftY,
+                Priority = 40,
+                Speed = 10,
+                ResetPosition = 5,
+                Description = "LY轴复位",
+                BindingParamName = "[左轴组]复位位置:Y"
+            });
+
+            system.ResetItems.Add(new HomingItem()
+            {
+                StepType = HomeStepType.AbsMove,
+                AxisName = MotionAxisNames.RightY,
+                Priority = 40,
+                Speed = 10,
+                ResetPosition = 5,
+                Description = "RY轴复位",
+                BindingParamName = "[右轴组]复位位置:Y"
+            });
+
+          
 
             //角度轴复位配置
             system.ResetItems.Add(new HomingItem()
