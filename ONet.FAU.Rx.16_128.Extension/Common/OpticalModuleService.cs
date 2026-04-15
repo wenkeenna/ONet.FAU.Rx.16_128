@@ -297,27 +297,27 @@ namespace ONet.FAU.Rx._16_128.Extension.Common
                 //        break;
                 //}
 
-                if (channelA == LASER_GROUP_1 && channelB == LASER_GROUP_2)
+                if ((channelA == LASER_GROUP_1  || channelA == LASER_GROUP_2) && (channelB == LASER_GROUP_1 || channelB == LASER_GROUP_2))
                 {
                     groupValue = 0X12;
                 }
-                else if (channelA == LASER_GROUP_1 && channelB == LASER_GROUP_3)
+                else if ((channelA == LASER_GROUP_1 || channelA == LASER_GROUP_3) && (channelB == LASER_GROUP_1 || channelB == LASER_GROUP_3))
                 {
                     groupValue = 0X13;
                 }
-                else if (channelA == LASER_GROUP_1 && channelB == LASER_GROUP_4)
+                else if ((channelA == LASER_GROUP_1 || channelA == LASER_GROUP_4) && (channelB == LASER_GROUP_1 || channelB == LASER_GROUP_4))
                 {
                     groupValue = 0X14;
                 }
-                else if (channelA == LASER_GROUP_2 && channelB == LASER_GROUP_3)
+                else if ((channelA == LASER_GROUP_2 || channelA == LASER_GROUP_3) && (channelB == LASER_GROUP_2 || channelB == LASER_GROUP_3))
                 {
                     groupValue = 0X23;
                 }
-                else if (channelA == LASER_GROUP_2 && channelB == LASER_GROUP_4)
+                else if ((channelA == LASER_GROUP_2 || channelA == LASER_GROUP_4) && (channelB == LASER_GROUP_2 || channelB == LASER_GROUP_4))
                 {
                     groupValue = 0X24;
                 }
-                else if (channelA == LASER_GROUP_3 && channelB == LASER_GROUP_4)
+                else if ((channelA == LASER_GROUP_3 || channelA == LASER_GROUP_4) && (channelB == LASER_GROUP_3 || channelB == LASER_GROUP_4))
                 {
                     groupValue = 0X34;
                 }

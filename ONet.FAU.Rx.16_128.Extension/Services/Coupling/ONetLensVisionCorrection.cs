@@ -398,16 +398,7 @@ namespace ONet.FAU.Rx._16_128.Extension.Services.Coupling
                     var offsetAngle = B_PICA_Angle - L_FA_Angle;
 
                     eventAggregator.GetEvent<Event_Message>().Publish($"获取左FA角度:{offsetAngle}");
-                    //double resAngle = 0;
-
-                    //if (offsetAngle < 0)
-                    //{
-                    //    resAngle = leftRZ.GetPulsePosition() + Math.Abs(offsetAngle);
-                    //}
-                    //else
-                    //{
-                    //    resAngle = leftRZ.GetPulsePosition() + offsetAngle;
-                    //}
+                
 
 
 
@@ -529,8 +520,8 @@ namespace ONet.FAU.Rx._16_128.Extension.Services.Coupling
                     var res_X = right_X.GetPulsePosition() + B_PICB_X - R_FA_X + B_OffSet_PICB_X;
                     var res_Y = right_Y.GetPulsePosition() + B_PICB_Y - R_FA_Y + B_OffSet_PICB_Y;
 
-                    para.Children.Add(ParameterModel.Create(Parameter.UserDefined, "PIC_X", res_X.ToString("F4"), ParameterType.Double));
-                    para.Children.Add(ParameterModel.Create(Parameter.UserDefined, "PIC_Y", res_Y.ToString("F4"), ParameterType.Double));
+                    para.Children.Add(ParameterModel.Create(Parameter.UserDefined, "PICB_X", res_X.ToString("F4"), ParameterType.Double));
+                    para.Children.Add(ParameterModel.Create(Parameter.UserDefined, "PICB_Y", res_Y.ToString("F4"), ParameterType.Double));
 
                 }
 

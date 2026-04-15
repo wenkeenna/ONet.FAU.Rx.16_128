@@ -532,6 +532,11 @@
             是否显示坐标信息
             </summary>
         </member>
+        <member name="P:VMControls.WPF.Release.VmParamsConfigWithRenderControl.ImageComboBoxVisible">
+            <summary>
+            是否显示图像下拉选择控件
+            </summary>
+        </member>
         <member name="E:VMControls.WPF.Release.VmParamsConfigWithRenderControl.OnMouseLeftButtonDownPixelChanged">
             <summary>
             鼠标左键点击位置像素坐标事件
@@ -596,6 +601,18 @@
             参数为尺寸小于100*100的图像绝对路径或#+16进制数表示的颜色字符串
             </summary>
             <param name="value">尺寸小于100*100的图像绝对路径或#+16进制数表示的颜色字符串</param>
+        </member>
+        <member name="M:VMControls.WPF.Release.VmParamsConfigWithRenderControl.ChangeTopBarVisibility(System.Boolean)">
+            <summary>
+            控制顶部栏控件显示隐藏
+            </summary>
+            <param name="flag"></param>
+        </member>
+        <member name="M:VMControls.WPF.Release.VmParamsConfigWithRenderControl.ChangeMenuVisibility(System.Boolean)">
+            <summary>
+            控制右键菜单显示隐藏
+            </summary>
+            <param name="flag"></param>
         </member>
         <member name="M:VMControls.WPF.Release.VmParamsConfigWithRenderControl.GetBaseHandle">
             <summary>
@@ -716,6 +733,12 @@
             根据模块ID绑定实时取流控件（COM组件）
             </summary>
         </member>
+        <member name="M:VMControls.WPF.Release.VmRealTimeAcqControl.ShowButton(System.Boolean)">
+            <summary>
+            按钮是否可见接口（COM组件）
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:VMControls.WPF.Release.VmRealTimeAcqControl.InitializeComponent">
             <summary>
             InitializeComponent
@@ -732,6 +755,11 @@
         <member name="P:VMControls.WPF.Release.VmRenderControl.CoordinateInfoVisible">
             <summary>
             是否显示坐标信息
+            </summary>
+        </member>
+        <member name="P:VMControls.WPF.Release.VmRenderControl.ImageComboBoxVisible">
+            <summary>
+            是否显示图像下拉选择控件
             </summary>
         </member>
         <member name="E:VMControls.WPF.Release.VmRenderControl.OnMouseLeftButtonDownPixelChanged">
@@ -790,6 +818,18 @@
             </summary>
             <param name="value">尺寸小于100*100的图像绝对路径或#+16进制数表示的颜色字符串</param>
         </member>
+        <member name="M:VMControls.WPF.Release.VmRenderControl.ChangeTopBarVisibility(System.Boolean)">
+            <summary>
+            控制顶部栏控件显示隐藏
+            </summary>
+            <param name="flag"></param>
+        </member>
+        <member name="M:VMControls.WPF.Release.VmRenderControl.ChangeMenuVisibility(System.Boolean)">
+            <summary>
+            控制右键菜单显示隐藏
+            </summary>
+            <param name="flag"></param>
+        </member>
         <member name="P:VMControls.WPF.Release.VmRenderControl.IsShowCustomROIMenu">
             <summary>
             是否显示右键绘制ROI菜单
@@ -799,6 +839,17 @@
             <summary>
             自定义ROI增加事件
             </summary>
+        </member>
+        <member name="E:VMControls.WPF.Release.VmRenderControl.OnCustomRoiDeleteEvent">
+            <summary>
+            自定义ROI删除事件
+            </summary>
+        </member>
+        <member name="M:VMControls.WPF.Release.VmRenderControl.PrepareDrawRoi(VMControls.RenderInterface.CustomRoiType)">
+            <summary>
+            准备绘制ROI，传入ROI类型后即可直接用鼠标绘制对应ROI
+            </summary>
+            <param name="roiType"></param>
         </member>
         <member name="M:VMControls.WPF.Release.VmRenderControl.DrawCppShapes(System.Object,System.Boolean)">
             <summary>

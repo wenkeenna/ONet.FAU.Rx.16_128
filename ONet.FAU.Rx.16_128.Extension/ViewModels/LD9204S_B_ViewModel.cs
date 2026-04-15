@@ -110,33 +110,33 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
 
         private void OnInstrmentKitCommandEvent(string obj)
         {
-            //string[] CMD_Parse = obj.Split(':');
+            string[] CMD_Parse = obj.Split(':');
 
-            //if (CMD_Parse.Length < 2)
-            //{
-            //    _eventAggregator.GetEvent<Event_Message>().Publish($"{DEV_NAME}: 命令格式错误:{obj}。");
-            //    return;
-            //}
+            if (CMD_Parse.Length < 2)
+            {
+                _eventAggregator.GetEvent<Event_Message>().Publish($"{DEV_NAME}: 命令格式错误:{obj}。");
+                return;
+            }
 
-            //if (CMD_Parse[0] == DEV_NAME && CMD_Parse[1] == DEV_STATE_ON)
-            //{
-             
-            //        _logger.Error($"{DEV_NAME}：接收启动命令，启动数据采集...");
-            //    _isPollingActive = true;
+            if (CMD_Parse[0] == DEV_NAME && CMD_Parse[1] == DEV_STATE_ON)
+            {
 
-            //    StartPolling();
+                _logger.Error($"{DEV_NAME}：接收启动命令，启动数据采集...");
+                _isPollingActive = true;
+
+                StartPolling();
 
 
-            //}
-            //else if(CMD_Parse[0] == DEV_NAME && CMD_Parse[1] == DEV_STATE_OFF)
-            //{
-            //    _logger?.Info($"{DEV_NAME}收到 OFF 命令，停止轮询");
-            //    _eventAggregator.GetEvent<Event_Message>().Publish($"{DEV_NAME}收到 OFF 命令，停止轮询");
-            //    _isPollingActive = false;
-            //    // StopPollingAsync();
+            }
+            else if (CMD_Parse[0] == DEV_NAME && CMD_Parse[1] == DEV_STATE_OFF)
+            {
+                _logger?.Info($"{DEV_NAME}收到 OFF 命令，停止轮询");
+                _eventAggregator.GetEvent<Event_Message>().Publish($"{DEV_NAME}收到 OFF 命令，停止轮询");
+                _isPollingActive = false;
+                // StopPollingAsync();
 
-            //    _loopCts?.Cancel();
-            //}
+                _loopCts?.Cancel();
+            }
 
 
         }
@@ -224,7 +224,7 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
                             // 调用之前优化过的元组方法
                             var data  = _ld9208ControllerC.GetAllPower().Split(',');
                             var dataB = _ld9208ControllerD.GetAllPower().Split(',');
-                          
+                            data.Append(dataB);
 
                             for (int i = 0; i < data.Length; i++)
                             {

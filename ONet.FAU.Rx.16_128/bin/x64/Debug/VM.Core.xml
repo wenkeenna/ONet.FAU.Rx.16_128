@@ -24,6 +24,11 @@
             <param name="strParamName"></param>
             <param name="stPosture"></param>
         </member>
+        <member name="M:VM.Core.DynamicInput.GetAllInputNameInfo">
+            <summary>
+            获取所有输出名称信息（CONTOURPOINTS、POINTSET、小写的image,这三种类型不支持）
+            </summary>
+        </member>
         <member name="M:VM.Core.DynamicOutput.GetOutputFloat(System.String)">
             <summary>
             浮点型结果
@@ -1290,7 +1295,7 @@
             自动连接
             </summary>
         </member>
-        <member name="M:VM.Core.VmModule.AutoLinkData(VMControls.Interface.IVmModule,System.Int32)">
+        <member name="M:VM.Core.VmModule.AutoLinkDataRe(VMControls.Interface.IVmModule,System.Int32)">
             <summary>
             自动订阅
             </summary>
@@ -1407,6 +1412,11 @@
         <member name="M:VM.Core.VmModule.InitDynamicIO">
             <summary>
             动态io初始化
+            </summary>
+        </member>
+        <member name="M:VM.Core.VmModule.VMControls#Interface#IVmModule#RebuildLeafIODictionary">
+            <summary>
+            重建叶子IO字典（内部使用）
             </summary>
         </member>
         <member name="M:VM.Core.VmModule.AddAllIO(VM.Core.VmIO)">
@@ -2402,6 +2412,11 @@
             <param name="strParamName"></param>
             <param name="stPosture"></param>
         </member>
+        <member name="M:VM.Core.ProcedureParam.GetAllInputNameInfo">
+            <summary>
+            获取所有输入名称信息（CONTOURPOINTS、POINTSET、小写的image,这三种类型不支持）
+            </summary>
+        </member>
         <member name="T:VM.Core.ProcedureResult">
             <summary>
             CH: 流程结果类 | EN: Procedure Result Class
@@ -2424,14 +2439,14 @@
         </member>
         <member name="M:VM.Core.ProcedureResult.GetOutputInt(System.String)">
             <summary>
-            获取整型输出
+            获取整型输出(结果为空时nValueNum为0且pIntVal和nReserved为null)
             </summary>
             <param name="strParam">参数名称</param>
             <returns></returns>
         </member>
         <member name="M:VM.Core.ProcedureResult.GetOutputFloat(System.String)">
             <summary>
-            获取浮点型输出
+            获取浮点型输出(结果为空时nValueNum为0且pFloatVal和nReserved为null)
             </summary>
             <param name="strParam">参数名称</param>
             <returns></returns>
@@ -2439,7 +2454,7 @@
         <!-- 对于成员“M:VM.Core.ProcedureResult.GetOutputString(System.String)”忽略有格式错误的 XML 注释 -->
         <member name="M:VM.Core.ProcedureResult.GetOutputByteArray(System.String)">
             <summary>
-            获取二进制数据型输出
+            获取二进制数据型输出(结果为空时strValue为null)
             </summary>
             <param name="strParam">参数名称</param>
             <returns></returns>
@@ -2819,10 +2834,19 @@
         </member>
         <member name="M:VM.Core.VmProcedure.Load(System.String,System.String)">
             <summary>
-            导入流程
+            导入流程 
             </summary>
             <param name="strPath">路径</param>
             <param name="strPassword">密码(预留)</param>
+            <returns></returns>
+        </member>
+        <member name="M:VM.Core.VmProcedure.Load(System.String,System.String,System.Boolean)">
+            <summary>
+            导入流程 
+            </summary>
+            <param name="strPath">路径</param>
+            <param name="strPassword">密码(二次开发场景下密码默认为"")</param>
+            <param name="bIsOverrideGlobal">是否覆盖全局模块，true:覆盖全局模块,false:忽略全局模块</param>
             <returns></returns>
         </member>
         <member name="M:VM.Core.VmProcedure.SaveAs(System.String,System.String)">
@@ -3311,6 +3335,11 @@
             相机取图信息回调
             </summary>
         </member>
+        <member name="E:VM.Core.VmSolution.OnCameraConnectStatusCallBackEvent">
+            <summary>
+            相机连接状态回调
+            </summary>
+        </member>
         <member name="E:VM.Core.VmSolution.OnCommuConnectCallBackEvent">
             <summary>
             通信连接状态回调
@@ -3502,9 +3531,14 @@
             相机取图信息
             </summary>
         </member>
-        <member name="M:VM.Core.VmSolution.MSolutionManager_OnCommuConnect(VM.PlatformSDKCS.ImvsSdkDefine.IMVS_COMMUNICATION_CONNECT_INFO)">
+        <member name="M:VM.Core.VmSolution.MSolutionManager_OnCameraConnectStatus(VM.PlatformSDKCS.ImvsSdkDefine.IMVS_CAMERA_CONNECT_STATUS_INFO)">
             <summary>
             相机连接状态
+            </summary>
+        </member>
+        <member name="M:VM.Core.VmSolution.MSolutionManager_OnCommuConnect(VM.PlatformSDKCS.ImvsSdkDefine.IMVS_COMMUNICATION_CONNECT_INFO)">
+            <summary>
+            通信连接状态
             </summary>
         </member>
         <member name="M:VM.Core.VmSolution.MProcessManager_OnProcessExecuteStatusCallBack(VM.PlatformSDKCS.ImvsSdkDefine.IMVS_PROC_CONTIEXECUTE_INFO_LIST)">

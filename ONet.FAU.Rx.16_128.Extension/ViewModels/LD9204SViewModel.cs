@@ -62,6 +62,12 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
         private CancellationTokenSource _loopCts;
         private ILogger _logger;
 
+
+        private const string DEV_NAME = "LD9204S_A";
+        private const string DEV_STATE_ON = "ON";
+        private const string DEV_STATE_OFF = "OFF";
+        private bool _isPollingActive = false;
+
         public LD9204SViewModel(IEventAggregator eventAggregator, IContainerProvider containerProvider, IDataBindingContext dataBinding,ILogger logger)
         {
 
@@ -99,11 +105,43 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
             _logger= logger;
 
             _eventAggregator.GetEvent<AppStartUpEvent>().Subscribe(OnAppStartUpEvent);
+            _eventAggregator.GetEvent<InstrmentKitCommandEvent>().Subscribe(OnInstrmentKitCommandEvent);
 
             // 模拟实时数据刷新 (实际开发中由硬件监听器触发)
             //  StartSimulation();
         }
+        private void OnInstrmentKitCommandEvent(string obj)
+        {
+            string[] CMD_Parse = obj.Split(':');
 
+            if (CMD_Parse.Length < 2)
+            {
+                _eventAggregator.GetEvent<Event_Message>().Publish($"{DEV_NAME}: 命令格式错误:{obj}。");
+                return;
+            }
+
+            if (CMD_Parse[0] == DEV_NAME && CMD_Parse[1] == DEV_STATE_ON)
+            {
+
+                _logger.Error($"{DEV_NAME}：接收启动命令，启动数据采集...");
+                _isPollingActive = true;
+
+                StartPolling();
+
+
+            }
+            else if (CMD_Parse[0] == DEV_NAME && CMD_Parse[1] == DEV_STATE_OFF)
+            {
+                _logger?.Info($"{DEV_NAME}收到 OFF 命令，停止轮询");
+                _eventAggregator.GetEvent<Event_Message>().Publish($"{DEV_NAME}收到 OFF 命令，停止轮询");
+                _isPollingActive = false;
+                // StopPollingAsync();
+
+                _loopCts?.Cancel();
+            }
+
+
+        }
         private void OnAppStartUpEvent(object obj)
         {
             try

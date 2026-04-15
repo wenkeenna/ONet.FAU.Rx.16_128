@@ -11,6 +11,7 @@ namespace ONet.FAU.Rx._16_128.Extension.Model
         public bool Success { get; set; }
         public double Min { get; set; }
         public double Max { get; set; }
+        public double BestPos { get; set; }
 
         public List<CouplingData> CouplingData;
     }

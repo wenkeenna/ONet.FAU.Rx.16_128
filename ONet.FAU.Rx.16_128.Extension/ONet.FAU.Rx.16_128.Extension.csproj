@@ -141,10 +141,15 @@
     <Compile Include="Model\ChannelData.cs" />
     <Compile Include="Model\CorrectionPara.cs" />
     <Compile Include="Model\CouplingData.cs" />
+    <Compile Include="Model\FlatAreaData.cs" />
     <Compile Include="Model\LaserChannelModel.cs" />
     <Compile Include="Model\Parameter1D.cs" />
+    <Compile Include="Model\Parameter2D.cs" />
+    <Compile Include="Model\Parameter3D.cs" />
     <Compile Include="Model\PowerMeterChannelModel.cs" />
     <Compile Include="Model\Result1D.cs" />
+    <Compile Include="Model\Result2D.cs" />
+    <Compile Include="Model\Result3D.cs" />
     <Compile Include="ONetFAURx16_128ExtensionModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -159,18 +164,27 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Services\Coupling\CompositeTool.cs" />
     <Compile Include="Services\Coupling\ONetCoupling1D.cs" />
+    <Compile Include="Services\Coupling\ONetCoupling2D.cs" />
+    <Compile Include="Services\Coupling\ONetFACouplingCorrection.cs" />
     <Compile Include="Services\Coupling\ONetLensVisionCorrection.cs" />
     <Compile Include="Services\Coupling\ONetPICPosition.cs" />
+    <Compile Include="ViewModels\CompositeToolViewModel.cs" />
     <Compile Include="ViewModels\GolightOSMWD41310ViewModel.cs" />
     <Compile Include="ViewModels\GolightOSMWD41310_B_ViewModel.cs" />
     <Compile Include="ViewModels\LD9204SViewModel.cs" />
     <Compile Include="ViewModels\LD9204S_B_ViewModel.cs" />
     <Compile Include="ViewModels\MaynuoM8811ViewModel.cs" />
     <Compile Include="ViewModels\ONetCoupling1DViewModel.cs" />
+    <Compile Include="ViewModels\ONetCoupling2DViewModel.cs" />
+    <Compile Include="ViewModels\ONetFACouplingCorrectionViewModel.cs" />
     <Compile Include="ViewModels\ONetLensVisionCorrectionViewModel.cs" />
     <Compile Include="ViewModels\ONetPICPositionViewModel.cs" />
     <Compile Include="ViewModels\OpticalModuleViewModel.cs" />
+    <Compile Include="Views\CompositeToolView.xaml.cs">
+      <DependentUpon>CompositeToolView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\GolightOSMWD41310View.xaml.cs">
       <DependentUpon>GolightOSMWD41310View.xaml</DependentUpon>
     </Compile>
@@ -188,6 +202,12 @@
     </Compile>
     <Compile Include="Views\ONetCoupling1DView.xaml.cs">
       <DependentUpon>ONetCoupling1DView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ONetCoupling2DView.xaml.cs">
+      <DependentUpon>ONetCoupling2DView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ONetFACouplingCorrectionView.xaml.cs">
+      <DependentUpon>ONetFACouplingCorrectionView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ONetLensVisionCorrectionView.xaml.cs">
       <DependentUpon>ONetLensVisionCorrectionView.xaml</DependentUpon>
@@ -211,6 +231,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Page Include="Views\CompositeToolView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\GolightOSMWD41310View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -232,6 +256,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ONetCoupling1DView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ONetCoupling2DView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ONetFACouplingCorrectionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

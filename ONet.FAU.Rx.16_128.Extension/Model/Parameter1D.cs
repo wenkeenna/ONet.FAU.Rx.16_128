@@ -50,15 +50,7 @@ namespace ONet.FAU.Rx._16_128.Extension.Model
         { get { return axisGroup; } set { axisGroup = value; RaisePropertyChanged(); } }
 
 
-        //private CouplingDataSource dataSource;
-        ///// <summary>
-        ///// 耦合数据来源
-        ///// </summary>
-        //public CouplingDataSource DataSource { get { return dataSource; } set { dataSource = value; RaisePropertyChanged(); } }
-
-
-
-
+        
 
         private ProductType type;
         /// <summary>
@@ -126,17 +118,6 @@ namespace ONet.FAU.Rx._16_128.Extension.Model
         { get { return axisname; } set { axisname = value; RaisePropertyChanged(); } }
 
 
-
-
-        private bool issavedata;
-        /// <summary>
-        /// 是否保存数据
-        /// </summary>
-        public bool IsSaveData
-        { get { return issavedata; } set { issavedata = value; RaisePropertyChanged(); } }
-
-
-
         private string dataremark;
         /// <summary>
         /// 数据备注
@@ -177,8 +158,6 @@ namespace ONet.FAU.Rx._16_128.Extension.Model
                 RaisePropertyChanged();
             }
         }
-
-
 
         private int _datadealy;
         public int DataDelay { get { return _datadealy; } set { _datadealy = value; RaisePropertyChanged(); } }

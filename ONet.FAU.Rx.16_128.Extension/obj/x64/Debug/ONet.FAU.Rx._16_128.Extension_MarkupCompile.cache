@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 
-9-1974490970
+12-1032898321
 
-42-1744888503
-271721864661
-Views\GolightOSMWD41310View.xaml;Views\GolightOSMWD41310_B_View.xaml;Views\LD9204SView.xaml;Views\LD9204S_B_View.xaml;Views\MaynuoM8811View.xaml;Views\ONetCoupling1DView.xaml;Views\ONetLensVisionCorrectionView.xaml;Views\ONetPICPositionView.xaml;Views\OpticalModuleView.xaml;
+551840816704
+1411354221247
+Views\CompositeToolView.xaml;Views\GolightOSMWD41310View.xaml;Views\GolightOSMWD41310_B_View.xaml;Views\LD9204SView.xaml;Views\LD9204S_B_View.xaml;Views\MaynuoM8811View.xaml;Views\ONetCoupling1DView.xaml;Views\ONetCoupling2DView.xaml;Views\ONetFACouplingCorrectionView.xaml;Views\ONetLensVisionCorrectionView.xaml;Views\ONetPICPositionView.xaml;Views\OpticalModuleView.xaml;
 
-True
+False
 

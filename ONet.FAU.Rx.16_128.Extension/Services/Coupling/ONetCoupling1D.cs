@@ -114,7 +114,7 @@ namespace ONet.FAU.Rx._16_128.Extension.Services.Coupling
 
                 _opticalModuleService = _containerProvider.Resolve<OpticalModuleService>();
 
-
+                eventAggregator.GetEvent<InstrmentKitCommandEvent>().Publish($"{LD9204S_A}:{STATE_OFF}");
                 eventAggregator.GetEvent<InstrmentKitCommandEvent>().Publish($"{LD9204S_B}:{STATE_OFF}");
 
                 await Task.Delay(1000);
@@ -151,9 +151,6 @@ namespace ONet.FAU.Rx._16_128.Extension.Services.Coupling
                 {
                     var motion = motionsystem.GetAxis(RightPara.AxisName);
 
-                    //if (RightPara.SelectedGroup == ChannelGroup.None) return false;
-                    //int startCh = (int)RightPara.SelectedGroup;
-                    //await _opticalModuleService.SetLaserStateAsync(startCh);
 
                     tasks.Add(controller.Run1DFullRangeAsync(motion, RightPara, token, eventAggregator, Parameter, logger, _ld9208C, _ld9208D, 1));
                 }
@@ -161,6 +158,7 @@ namespace ONet.FAU.Rx._16_128.Extension.Services.Coupling
 
                 Result1D[] allTasks = await Task.WhenAll(tasks.ToArray());
 
+                eventAggregator.GetEvent<InstrmentKitCommandEvent>().Publish($"{LD9204S_A}:{STATE_ON}");
                 eventAggregator.GetEvent<InstrmentKitCommandEvent>().Publish($"{LD9204S_B}:{STATE_ON}");
 
                 foreach (var task in allTasks)
@@ -176,8 +174,10 @@ namespace ONet.FAU.Rx._16_128.Extension.Services.Coupling
             catch (Exception ex)
             {
                 eventAggregator.GetEvent<Event_Message>().Publish(ex.ToString());
-                eventAggregator.GetEvent<InstrmentKitCommandEvent>().Publish($"{LD9204S_B}:{STATE_ON}");
 
+                eventAggregator.GetEvent<InstrmentKitCommandEvent>().Publish($"{LD9204S_A}:{STATE_ON}");
+                eventAggregator.GetEvent<InstrmentKitCommandEvent>().Publish($"{LD9204S_B}:{STATE_ON}");
+             
                 return false;
             }
         }

@@ -1064,7 +1064,7 @@
             </summary>
             <param name="module"></param>
         </member>
-        <member name="M:VMControls.WPF.DataForUI.VmModuleBaseDecorator.AddConnection(VMControls.Interface.IVmModule,VMControls.Interface.IVmModule)">
+        <member name="M:VMControls.WPF.DataForUI.VmModuleBaseDecorator.AddConnection(VMControls.Interface.IVmModule,VMControls.Interface.IVmModule,System.Boolean)">
             <summary>
             增加连接
             </summary>
@@ -2276,6 +2276,11 @@
             是否需要下发，防止初始化时下发数据
             </summary>
         </member>
+        <member name="F:VMControls.WPF.GlobalUI.LightSourceDevice.isTriggerControllerSelectChange">
+            <summary>
+            列表刷新时不触发控制器改变命令
+            </summary>
+        </member>
         <member name="P:VMControls.WPF.GlobalUI.LightSourceDevice.IsConnected">
             <summary>
             是否已连接
@@ -2329,6 +2334,21 @@
         <member name="P:VMControls.WPF.GlobalUI.LightSourceDevice.Device_IO">
             <summary>
             IO参数
+            </summary>
+        </member>
+        <member name="P:VMControls.WPF.GlobalUI.LightSourceDevice.Device_IOOutput">
+            <summary>
+            IO输出参数
+            </summary>
+        </member>
+        <member name="P:VMControls.WPF.GlobalUI.LightSourceDevice.Device_Timer">
+            <summary>
+            定时器参数
+            </summary>
+        </member>
+        <member name="P:VMControls.WPF.GlobalUI.LightSourceDevice.Device_IOInput">
+            <summary>
+            IO输入参数
             </summary>
         </member>
         <member name="P:VMControls.WPF.GlobalUI.LightSourceDevice.ChannelsA">
@@ -2441,6 +2461,11 @@
             是否在界面显示持续时间
             </summary>
         </member>
+        <member name="P:VMControls.WPF.GlobalUI.LightChannel.IsShowChannelEnable">
+            <summary>
+            是否在界面显示通信使能
+            </summary>
+        </member>
         <member name="P:VMControls.WPF.GlobalUI.LightChannel.ChannelNumA">
             <summary>
             通道号
@@ -2494,6 +2519,99 @@
             <summary>
             视觉控制器IO参数
             </summary>
+        </member>
+        <member name="T:VMControls.WPF.GlobalUI.Device_IOOutput">
+            <summary>
+            VC2000 IO输出参数
+            </summary>
+        </member>
+        <member name="M:VMControls.WPF.GlobalUI.Device_IOOutput.SetIoOutputConfig">
+            <summary>
+            设置IO输出参数
+            </summary>SetChannelParam
+            <returns></returns>
+        </member>
+        <member name="M:VMControls.WPF.GlobalUI.Device_IOOutput.ConvertToVC2000_IO_OUT_PARAM">
+            <summary>
+            IO输出参数转换为结构体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMControls.WPF.GlobalUI.Device_IOOutput.SetIoOutputParam(Apps.XmlParser.ParamTab.VC2000_IO_OUT_PARAM)">
+            <summary>
+            IoOutput参数下发底层
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VMControls.WPF.GlobalUI.Device_IOOutput.GetIoOutputParam">
+            <summary>
+            从底层获取IoOutput参数
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:VMControls.WPF.GlobalUI.Device_IOInput">
+            <summary>
+            VC2000 IO输出参数
+            </summary>
+        </member>
+        <member name="M:VMControls.WPF.GlobalUI.Device_IOInput.SetIoInputConfig">
+            <summary>
+            设置IO输入参数
+            </summary>SetChannelParam
+            <returns></returns>
+        </member>
+        <member name="M:VMControls.WPF.GlobalUI.Device_IOInput.ConvertToVC2000_IO_IN_PARAM">
+            <summary>
+            IO输入参数转换为结构体
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:VMControls.WPF.GlobalUI.Device_IOInput.SetIoInputParam(Apps.XmlParser.ParamTab.VC2000_IO_IN_PARAM)">
+            <summary>
+            IoOutput参数下发底层
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VMControls.WPF.GlobalUI.Device_IOInput.GetIoInputParam">
+            <summary>
+            从底层获取IoOutput参数
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:VMControls.WPF.GlobalUI.Device_Timer">
+            <summary>
+            VC2000 定时器参数
+            </summary>
+        </member>
+        <member name="M:VMControls.WPF.GlobalUI.Device_Timer.SetTimerConfig">
+            <summary>
+            设置Timer参数
+            </summary>SetChannelParam
+            <returns></returns>
+        </member>
+        <member name="M:VMControls.WPF.GlobalUI.Device_Timer.ConvertToVC2000_TIMER_PARAM">
+            <summary>
+            TIMER参数转换为结构体
+            </summary>
+            <returns></returns>  
+        </member>
+        <member name="M:VMControls.WPF.GlobalUI.Device_Timer.SetTimerParam(Apps.XmlParser.ParamTab.VC2000_TIMER_PARAM)">
+            <summary>
+            Timer参数下发底层
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:VMControls.WPF.GlobalUI.Device_Timer.GetTimerParam">
+            <summary>
+            从底层获取Timer参数
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param> Durations Delays Modes BurstCounts TriggerSources TriggerActivations
         </member>
         <member name="T:VMControls.WPF.GlobalUI.LightSourceDlg">
             <summary>
@@ -2685,6 +2803,11 @@
         <member name="F:VMControls.WPF.MainViewControl.logCommand">
             <summary>
             打开日志浮窗命令
+            </summary>
+        </member>
+        <member name="M:VMControls.WPF.MainViewControl.Dispose">
+            <summary>
+            释放引用和内部资源
             </summary>
         </member>
         <member name="M:VMControls.WPF.MainViewControl.InitializeComponent">
@@ -2962,6 +3085,11 @@
             数据源模块
             </summary>
         </member>
+        <member name="P:VMControls.WPF.ParamsConfigWithRenderControlBase.ImageInputs">
+            <summary>
+            模块输入图片的订阅集合
+            </summary>
+        </member>
         <member name="P:VMControls.WPF.ParamsConfigWithRenderControlBase.ImageDataSource">
             <summary>
             图像源
@@ -2981,6 +3109,11 @@
         <member name="P:VMControls.WPF.ParamsConfigWithRenderControlBase.CoordinateInfoVisible">
             <summary>
             是否显示坐标信息
+            </summary>
+        </member>
+        <member name="P:VMControls.WPF.ParamsConfigWithRenderControlBase.ImageComboBoxVisible">
+            <summary>
+            是否显示图像下拉选择控件
             </summary>
         </member>
         <member name="P:VMControls.WPF.ParamsConfigWithRenderControlBase.ParamsConfigWidth">
@@ -3064,6 +3197,18 @@
             参数为尺寸小于100*100的图像绝对路径或#+16进制数表示的颜色字符串
             </summary>
             <param name="value">尺寸小于100*100的图像绝对路径或#+16进制数表示的颜色字符串</param>
+        </member>
+        <member name="M:VMControls.WPF.ParamsConfigWithRenderControlBase.ChangeTopBarVisibility(System.Boolean)">
+            <summary>
+            控制顶部栏控件显示隐藏
+            </summary>
+            <param name="flag"></param>
+        </member>
+        <member name="M:VMControls.WPF.ParamsConfigWithRenderControlBase.ChangeMenuVisibility(System.Boolean)">
+            <summary>
+            控制右键菜单显示隐藏
+            </summary>
+            <param name="flag"></param>
         </member>
         <member name="M:VMControls.WPF.ParamsConfigWithRenderControlBase.InitializeComponent">
             <summary>
@@ -3398,6 +3543,28 @@
             参数为尺寸小于100*100的图像绝对路径或#+16进制数表示的颜色字符串
             </summary>
             <param name="value">尺寸小于100*100的图像绝对路径或#+16进制数表示的颜色字符串</param>
+        </member>
+        <member name="P:VMControls.WPF.RenderControlBase.ImageComboBoxVisible">
+            <summary>
+            是否显示图像下拉选择控件
+            </summary>
+        </member>
+        <member name="P:VMControls.WPF.RenderControlBase.TopBarVisible">
+            <summary>
+            是否显示图像顶部栏控件
+            </summary>
+        </member>
+        <member name="M:VMControls.WPF.RenderControlBase.ChangeTopBarVisibility(System.Boolean)">
+            <summary>
+            控制顶部栏控件显示隐藏
+            </summary>
+            <param name="flag"></param>
+        </member>
+        <member name="M:VMControls.WPF.RenderControlBase.ChangeMenuVisibility(System.Boolean)">
+            <summary>
+            控制右键菜单显示隐藏
+            </summary>
+            <param name="flag"></param>
         </member>
         <member name="P:VMControls.WPF.RenderControlBase.ImageViewList">
             <summary>
@@ -3989,6 +4156,11 @@
         <member name="M:VMControls.WPF.ToolControl.RegesitGlobalModuleWinAction">
             <summary>
             注册全局模块窗体事件
+            </summary>
+        </member>
+        <member name="M:VMControls.WPF.ToolControl.CommSetWithNoHide">
+            <summary>
+            每次打开通信管理窗体都是重新new,用于运行界面子窗体上弹出通信管理窗体
             </summary>
         </member>
         <member name="M:VMControls.WPF.ToolControl.CommSet">
