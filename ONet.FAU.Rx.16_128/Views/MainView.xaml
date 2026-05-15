@@ -280,7 +280,6 @@
                                             Height="Auto"
                                             prism:RegionManager.RegionName="Region_UVLampUPS81BView"
                                             IsEnabled="{Binding IsLicenseValid}" />
-
                                     </LayoutAnchorable>
 
 
@@ -295,7 +294,6 @@
                                             Height="Auto"
                                             prism:RegionManager.RegionName="Region_DC65LightSourceView"
                                             IsEnabled="{Binding IsLicenseValid}" />
-
                                     </LayoutAnchorable>
 
                                     <LayoutAnchorable
@@ -309,7 +307,6 @@
                                             Height="Auto"
                                             prism:RegionManager.RegionName="Region_ONetMaynuoM8811View"
                                             IsEnabled="{Binding IsLicenseValid}" />
-
                                     </LayoutAnchorable>
 
                                     <!--<LayoutAnchorable
@@ -357,7 +354,6 @@
                                             Height="Auto"
                                             prism:RegionManager.RegionName="Region_LD9204SView"
                                             IsEnabled="{Binding IsLicenseValid}" />
-
                                     </LayoutAnchorable>
 
 
@@ -373,7 +369,6 @@
                                             Height="Auto"
                                             prism:RegionManager.RegionName="Region_LD9204S_B_View"
                                             IsEnabled="{Binding IsLicenseValid}" />
-
                                     </LayoutAnchorable>
 
 
@@ -432,9 +427,7 @@
                                         <ContentControl
                                             x:Name="LightModuleView"
                                             Height="Auto"
-                                            prism:RegionManager.RegionName="OpticalModuleView"
-                                          />
-
+                                            prism:RegionManager.RegionName="OpticalModuleView"/>
                                     </LayoutAnchorable>
 
                                 </LayoutAnchorablePane>
@@ -457,7 +450,6 @@
 
 
                                 <LayoutAnchorablePane>
-
 
                                     <LayoutAnchorable
                                         Title="耦光系统"
@@ -500,8 +492,6 @@
                                     </LayoutAnchorable>
 
                                 </LayoutAnchorablePane>
-
-
 
                             </LayoutPanel>
                         </LayoutPanel>

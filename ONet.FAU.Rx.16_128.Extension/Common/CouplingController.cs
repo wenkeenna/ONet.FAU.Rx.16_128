@@ -351,7 +351,7 @@ namespace ONet.FAU.Rx._16_128.Extension.Common
                     //计算矫正角度
                     double deltaX = CH_8_Y.BestPos - CH_1_Y.BestPos;
 
-                    double angle = Math.Atan2(deltaX, 1.5) * (180 / Math.PI);
+                    double angle = Math.Atan2(deltaX, 1.75) * (180 / Math.PI);
 
                     eventAggregator.GetEvent<Event_Message>().Publish($"{Text}:耦合角度:{angle.ToString("F4")}");
 
@@ -460,25 +460,7 @@ namespace ONet.FAU.Rx._16_128.Extension.Common
                 string[] dataA = rawA.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
                 string[] dataB = rawB.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
-                //List<double> values = new List<double>(dataA.Length + dataB.Length);
-
-                //// 转换 A 的数据
-                //for (int i = 0; i < dataA.Length; i++)
-                //{
-                //    if (double.TryParse(dataA[i].Trim(), out double val))
-                //        values.Add(val);
-                //    else
-                //        values.Add(double.NaN); // 转换失败时放入 NaN
-                //}
-
-                //// 转换 B 的数据
-                //for (int i = 0; i < dataB.Length; i++)
-                //{
-                //    if (double.TryParse(dataB[i].Trim(), out double val))
-                //        values.Add(val);
-                //    else
-                //        values.Add(double.NaN);
-                //}
+          
                 double ResultData = 0;
 
                 if (correctChannel == CorrectChannel.Channle_1)
@@ -486,7 +468,7 @@ namespace ONet.FAU.Rx._16_128.Extension.Common
                     double.TryParse(dataA[0].Trim(), out ResultData);
                 }else if (correctChannel == CorrectChannel.Channle_8)
                 {
-                    double.TryParse(dataB[2].Trim(), out ResultData);
+                    double.TryParse(dataB[3].Trim(), out ResultData);
                 }
 
 
@@ -516,11 +498,9 @@ namespace ONet.FAU.Rx._16_128.Extension.Common
 
             plotDataMessage.Xs.AddRange(couplingDatas.Select(P => (double)P.Pos).ToList());
 
-
             plotDataMessage.MultiChannel.AddRange(couplingDatas.Select(P=>P.Values));
 
             eventAggregator.GetEvent<MultiChannelPlotDataEvetn>().Publish(plotDataMessage);
-
 
         }
 

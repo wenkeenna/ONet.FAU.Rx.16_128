@@ -111,9 +111,6 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
             }
         }
 
-
-
-
         private void OnAppStartUpEvent(object obj)
         {
             try

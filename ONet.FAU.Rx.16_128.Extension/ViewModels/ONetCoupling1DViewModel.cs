@@ -48,8 +48,8 @@ namespace ONet.FAU.Rx._16_128.Extension.ViewModels
             ToolIns = new ONetCoupling1D();
 
             CancelCommand = new DelegateCommand<object>(OnCancel);
-            ConfirmCommand = new DelegateCommand<object>(OnConfirm);
 
+            ConfirmCommand = new DelegateCommand<object>(OnConfirm);
 
             AxisList = new List<string>();
             AxisList.Clear();

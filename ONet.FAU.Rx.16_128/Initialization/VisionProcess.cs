@@ -98,12 +98,6 @@ namespace ONet.FAU.Rx._16_128.Initialization
             }
         }
 
-        public bool ProcessExecute(string ProcessName, out float X, out float Y)
-        {
-            X = (float)0.0123;
-            Y = (float)0.456;
-            return false;
-        }
 
         public bool ProcessExecute(string ProcessName, out float X, out float Y, out float Angle, string UserDefined)
         {
@@ -171,26 +165,12 @@ namespace ONet.FAU.Rx._16_128.Initialization
                 var pix_Y = result_y.pFloatVal[0];
                 Angle = result_angle.pFloatVal[0];
 
-                if (ProcessName == "右标定" || ProcessName == "左标定")
-                {
-                    X = pix_X;
-                    Y = pix_Y;
-
-                    return true;
-                }
-                else
-                {
-                    var res = GetVisionResult(CaliFileName, VisionName, out float outX, out float outY, out float angle);
-
-                    X = outX;
-                    Y = outY;
-                    Angle = angle;
-                }
-
-
             
+                var res = GetVisionResult(CaliFileName, VisionName, out float outX, out float outY, out float angle);
 
-
+                X = outX;
+                Y = outY;
+                Angle = angle;
 
                 return true;
             }
@@ -204,7 +184,87 @@ namespace ONet.FAU.Rx._16_128.Initialization
             }
 
         }
+        /// <summary>
+        /// 标定
+        /// </summary>
+        /// <param name="VisionName"></param>
+        /// <param name="X"></param>
+        /// <param name="Y"></param>
+        /// <param name="Angle"></param>
+        /// <returns></returns>
+        public bool ProcessExecute(string VisionName, out float X, out float Y)
+        {
 
+            X = 0;
+            Y = 0;
+          
+
+            try
+            {
+
+                procedure = (VmProcedure)VmSolution.Instance[VisionName];
+
+                procedure.ContinuousRunEnable = false;
+
+                VmModule = procedure;
+
+                if (!(bool)VmSolution.Instance.IsReady)
+                {
+                    _eventAggregator.GetEvent<Event_Message>().Publish("[Vision-实时图像]模块订阅未完成");
+                    return false;
+                }
+
+                _eventAggregator.GetEvent<VisionExecuteEvent>().Publish(VmModule);
+
+                if (procedure != null)
+                {
+                    procedure.Run();
+                }
+                else
+                {
+                    _eventAggregator.GetEvent<Event_Message>().Publish($"{VisionName}:实例为Null");
+                    _logger.Error($"{VisionName}:实例为Null");
+
+                    return false;
+                }
+
+                IntDataArray result_state = procedure.ModuResult.GetOutputInt("State");
+
+
+                if (result_state.pIntVal[0] != 1)
+                {
+                    _eventAggregator.GetEvent<Event_Message>().Publish($"{VisionName}:执行失败");
+                    _logger.Error($"{VisionName}:执行失败");
+                    return false;
+                }
+
+                FloatDataArray result_x = procedure.ModuResult.GetOutputFloat("X");
+                FloatDataArray result_y = procedure.ModuResult.GetOutputFloat("Y");
+                FloatDataArray result_angle = procedure.ModuResult.GetOutputFloat("Angle");
+                var pix_X = result_x.pFloatVal[0];
+                var pix_Y = result_y.pFloatVal[0];
+                var Angle = result_angle.pFloatVal[0];
+
+                if (VisionName == "右标定" || VisionName == "左标定")
+                {
+                    X = pix_X;
+                    Y = pix_Y;
+
+                    return true;
+                }
+              
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                _eventAggregator.GetEvent<Event_Message>().Publish($"{VisionName}:异常，{ex.Message}");
+                _logger.Error($"{VisionName}:异常，{ex.Message}");
+
+                return false;
+            }
+
+        }
         public bool ProcessExecute(string ProcessName, out float[] X, out float[] Y, out float[] Angle, string UserDefined)
         {
 
